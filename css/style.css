@@ -1,0 +1,344 @@
+/* =========================================================================
+   Сайт-портфолио Марии Колодницкой. Стиль "тёмное стекло":
+   графитовый фон, приглушённый цветной свет, матовые стеклянные панели,
+   хромовый акцент на ключевых словах.
+   Классы названы по БЭМ: блок__элемент--модификатор.
+   ========================================================================= */
+
+/* ---------- 0. Шрифт Onest лежит в самом сайте (лицензия OFL, fonts/OFL.txt):
+   посетитель не обращается к серверам Google. Шрифт переменный, один файл на все начертания. ---------- */
+@font-face {
+  font-family: Onest; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url(../fonts/onest-cyrillic.woff2) format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: Onest; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url(../fonts/onest-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- 1. Переменные ---------- */
+:root {
+  --fon: #0d0c11;
+  --tekst: #f1eff7;
+  --tekst-tihiy: #b3aec4;          /* второстепенный текст: контраст с фоном около 9:1 */
+  --steklo: rgba(255, 255, 255, .06);
+  --kraj: rgba(255, 255, 255, .14);
+  --kraj-yarche: rgba(255, 255, 255, .28);
+  --akcent: #b9adff;                /* сиреневый для ссылок и меток */
+  --hrom: linear-gradient(100deg, #ffffff 0%, #d9d3f2 35%, #9c93c4 55%, #f1eff7 75%, #b7aee0 100%);
+  --vys: #ff8a80;                   /* важность: высокая */
+  --sred: #ffcc80;                  /* важность: средняя */
+  --niz: #a5d6a7;                   /* важность: низкая */
+  --shirina: 1180px;
+  --radius: 20px;
+}
+
+/* ---------- 2. Основа ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body {
+  margin: 0;
+  background: var(--fon);
+  color: var(--tekst);
+  font: 17px/1.6 Onest, "Segoe UI", system-ui, sans-serif;
+  overflow-x: clip;                 /* плашки у фото и свет не дают прокрутки вбок; clip не ломает липкую шапку */
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--akcent); }
+h1, h2, h3 { letter-spacing: -.02em; line-height: 1.15; }
+p { margin: 0 0 10px; }
+
+/* видимый фокус для тех, кто ходит по сайту с клавиатуры */
+:focus-visible { outline: 3px solid #e9e3ff; outline-offset: 3px; border-radius: 6px; }
+
+/* ссылка "Перейти к содержимому": видна только при фокусе с клавиатуры */
+.propusk {
+  position: absolute; left: 16px; top: -60px; z-index: 100;
+  padding: 10px 16px; border-radius: 10px;
+  background: #fff; color: #16131f; font-weight: 600; text-decoration: none;
+}
+.propusk:focus { top: 12px; }
+
+/* ---------- 3. Свет на фоне: три размытых пятна медленно дрейфуют ---------- */
+.svet { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.svet span { position: absolute; border-radius: 50%; filter: blur(110px); }
+.svet span:nth-child(1) { width: 560px; height: 560px; left: -120px; top: -80px; background: rgba(86, 58, 214, .45); animation: drejf 22s ease-in-out infinite alternate; }
+.svet span:nth-child(2) { width: 520px; height: 520px; right: -140px; top: 160px; background: rgba(150, 34, 88, .38); animation: drejf 26s ease-in-out infinite alternate-reverse; }
+.svet span:nth-child(3) { width: 460px; height: 460px; left: 35%; top: 70vh; background: rgba(46, 86, 150, .30); animation: drejf 30s ease-in-out infinite alternate; }
+@keyframes drejf { to { transform: translate(90px, 60px) scale(1.12); } }
+
+/* ---------- 4. Матовое стекло: общий рецепт для всех панелей ---------- */
+.steklo {
+  background: var(--steklo);
+  border: 1px solid var(--kraj);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 30px 60px rgba(0, 0, 0, .45);
+}
+
+/* хромовые слова: по ним медленно проходит отблеск */
+.hrom {
+  background: var(--hrom); background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: otblesk 7s ease-in-out infinite;
+}
+@keyframes otblesk { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+
+/* ---------- 5. Кнопки ---------- */
+.knopka {
+  display: inline-block; padding: 13px 22px; border-radius: 12px;
+  font-weight: 600; font-size: 15px; text-decoration: none; color: var(--tekst);
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.knopka:hover { transform: translateY(-2px); }
+.knopka--glav { background: linear-gradient(180deg, #ffffff, #d8d2ee); color: #16131f; box-shadow: 0 10px 30px rgba(140, 120, 230, .35); }
+.knopka--steklo { background: rgba(255, 255, 255, .07); border: 1px solid var(--kraj); }
+.knopka--steklo:hover { border-color: var(--kraj-yarche); }
+
+/* ---------- 6. Шапка ---------- */
+.shapka {
+  position: sticky; top: 14px; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  max-width: var(--shirina); margin: 20px auto 0; padding: 10px 10px 10px 24px; border-radius: 18px;
+}
+.shapka__imya { font-weight: 700; color: var(--tekst); text-decoration: none; white-space: nowrap; }
+.shapka__menu { display: flex; gap: 28px; font-size: 15px; }
+.shapka__menu a { color: var(--tekst-tihiy); text-decoration: none; transition: color .2s; }
+.shapka__menu a:hover, .shapka__menu a[aria-current] { color: var(--tekst); }
+.shapka__pravo { display: flex; gap: 8px; align-items: center; }
+.shapka__burger {
+  display: none; width: 46px; height: 46px; border-radius: 12px; cursor: pointer;
+  background: rgba(255, 255, 255, .07); border: 1px solid var(--kraj); color: var(--tekst);
+}
+.shapka__burger span, .shapka__burger span::before, .shapka__burger span::after {
+  display: block; width: 18px; height: 2px; margin: 0 auto; background: currentColor; border-radius: 2px; position: relative; transition: transform .2s;
+}
+.shapka__burger span::before, .shapka__burger span::after { content: ""; position: absolute; left: 0; }
+.shapka__burger span::before { top: -6px; }
+.shapka__burger span::after { top: 6px; }
+
+/* ---------- 7. Первый экран ---------- */
+.pervyj {
+  max-width: var(--shirina); margin: 0 auto; padding: 80px 0 80px;
+  display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center;
+}
+.metka { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--tekst-tihiy); margin-bottom: 22px; }
+.metka i { width: 8px; height: 8px; border-radius: 50%; background: #7ee2b0; box-shadow: 0 0 12px #7ee2b0; }
+.pervyj h1 { font-size: 58px; line-height: 1.04; letter-spacing: -.035em; margin: 0 0 24px; }
+.pervyj__tekst { font-size: 19px; color: var(--tekst-tihiy); max-width: 560px; margin-bottom: 32px; }
+.pervyj__knopki { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
+.pervyj__fakty { display: flex; flex-wrap: wrap; gap: 34px; margin: 0; padding: 0; list-style: none; }
+.pervyj__fakty b { display: block; font-size: 28px; letter-spacing: -.02em; }
+.pervyj__fakty span { font-size: 13px; color: var(--tekst-tihiy); }
+
+/* справа: фото в стеклянной рамке, вокруг плавают рамки с настоящими скриншотами */
+.foto { position: relative; max-width: 420px; margin-left: auto; }
+.foto__ramka { border-radius: 28px; padding: 10px; }
+.foto__ramka img { border-radius: 20px; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.plashka { position: absolute; border-radius: 16px; padding: 8px; margin: 0; }
+.plashka img { border-radius: 9px; }
+.plashka__podpis {
+  position: absolute; top: -13px; left: 14px; padding: 3px 11px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; background: rgba(20, 18, 28, .9); border: 1px solid var(--kraj);
+}
+/* плашки лежат на нижней части фото, чтобы не закрывать лицо */
+.plashka--1 { width: 250px; left: -120px; bottom: 150px; animation: plyvet1 9s ease-in-out infinite; }
+.plashka--2 { width: 230px; right: -40px; bottom: 30px; animation: plyvet2 8s ease-in-out infinite; }
+@keyframes plyvet1 { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+@keyframes plyvet2 { 0%, 100% { translate: 0 0; } 50% { translate: 0 9px; } }
+
+/* ---------- 8. Разделы главной ---------- */
+.razdel { max-width: var(--shirina); margin: 0 auto; padding: 30px 0 90px; }
+.razdel__shapka { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+.razdel h2 { font-size: 38px; letter-spacing: -.03em; margin: 0; }
+.razdel__pod { margin: 0; max-width: 460px; font-size: 15px; color: var(--tekst-tihiy); }
+
+/* карточки результатов SEO */
+.rezultaty { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.rezultat { position: relative; border-radius: var(--radius); padding: 12px 12px 20px; transition: transform .3s, border-color .3s; }
+.rezultat:hover { transform: translateY(-6px); border-color: var(--kraj-yarche); }
+.rezultat__kartinka { height: 130px; overflow: hidden; border-radius: 12px; margin-bottom: 16px; background: #fff; }
+.rezultat__kartinka img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.chislo {
+  font-size: 34px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; margin: 0 6px 4px;
+  background: var(--hrom); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.rezultat__chto { margin: 6px 6px 10px; font-size: 15px; line-height: 1.45; }
+.rezultat__gde { margin: 0 6px; font-size: 13px; color: var(--tekst-tihiy); }
+/* вся карточка кликабельна: ссылка растянута на неё целиком */
+.rasyanut::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.rasyanut { color: inherit; text-decoration: none; }
+.vse-ssylka { display: inline-block; margin-top: 22px; font-weight: 600; }
+
+/* карточки разборов */
+.razbory { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.razbor { position: relative; display: flex; flex-direction: column; border-radius: var(--radius); padding: 24px 24px 22px; transition: transform .3s, border-color .3s; }
+.razbor:hover { transform: translateY(-6px); border-color: var(--kraj-yarche); }
+.razbor--shirokij { grid-column: span 2; }
+.razbor__tip { font-size: 13px; color: var(--akcent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
+.razbor h3 { font-size: 22px; margin: 0 0 10px; }
+.razbor__tekst { color: var(--tekst-tihiy); font-size: 15px; flex: 1; }
+.razbor .chislo { margin: 8px 0 2px; font-size: 30px; }
+.razbor__chislo-pod { font-size: 13px; color: var(--tekst-tihiy); margin-bottom: 14px; }
+
+/* метки-навыки */
+.tegi { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tegi li { font-size: 12.5px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, .07); border: 1px solid var(--kraj); color: #dcd7ea; }
+
+/* проекты */
+.proekty { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.proekt { border-radius: var(--radius); padding: 24px; }
+.proekt__znachok { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 14px; background: rgba(185, 173, 255, .14); border: 1px solid var(--kraj); }
+.proekt__znachok svg { width: 22px; height: 22px; stroke: #d9d3f2; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.proekt h3 { font-size: 19px; margin: 0 0 8px; }
+.proekt p { color: var(--tekst-tihiy); font-size: 15px; }
+.proekt__status { font-size: 12px; font-weight: 600; color: #7ee2b0; }
+.proekty__pod { margin-top: 18px; color: var(--tekst-tihiy); font-size: 15px; max-width: 760px; }
+
+/* навыки */
+.navyki { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.navyki__gruppa { border-radius: var(--radius); padding: 22px 24px; }
+.navyki__gruppa h3 { font-size: 18px; margin: 0 0 14px; }
+
+/* опыт и образование */
+.opyt { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.opyt__blok { border-radius: var(--radius); padding: 26px; }
+.opyt__blok h3 { font-size: 20px; margin: 0 0 4px; }
+.opyt__srok { font-size: 14px; color: var(--tekst-tihiy); margin-bottom: 14px; }
+.opyt ul { margin: 0; padding-left: 20px; color: #dcd7ea; font-size: 15px; }
+.opyt li { margin: 6px 0; }
+.opyt__punkt { margin-bottom: 18px; }
+.opyt__punkt:last-child { margin-bottom: 0; }
+.opyt__punkt b { display: block; }
+.opyt__punkt span { font-size: 14px; color: var(--tekst-tihiy); }
+
+/* контакты */
+.kontakty { border-radius: 28px; padding: 48px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.kontakty h2 { font-size: 40px; margin: 0 0 12px; }
+.kontakty p { color: var(--tekst-tihiy); }
+.kontakty__spisok { display: grid; gap: 12px; }
+.kontakty__spisok .knopka { text-align: center; }
+
+.podval { max-width: var(--shirina); margin: 0 auto; padding: 0 0 40px; font-size: 14px; color: var(--tekst-tihiy); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* ---------- 9. Страницы кейсов ---------- */
+.stranica { max-width: 980px; margin: 0 auto; padding: 50px 0 80px; }
+.kroshki { font-size: 14px; color: var(--tekst-tihiy); margin-bottom: 22px; }
+.kroshki a { color: var(--tekst-tihiy); }
+.stranica h1 { font-size: 46px; letter-spacing: -.03em; margin: 0 0 14px; }
+.stranica h2 { font-size: 28px; margin: 48px 0 16px; }
+.stranica h3 { font-size: 20px; margin: 0 0 10px; }
+.stranica h4 { font-size: 12.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--tekst-tihiy); margin: 18px 0 6px; }
+.meta { color: var(--tekst-tihiy); font-size: 14px; margin-bottom: 26px; }
+.blok { border-radius: var(--radius); padding: 22px 26px; margin: 16px 0; }
+.blok p:last-child, .blok ul:last-child { margin-bottom: 0; }
+.blok ul, .blok ol, .karta ul, .karta ol { padding-left: 20px; margin: 6px 0; }
+.blok li, .karta li { margin: 4px 0; }
+.blok .tegi, .karta .tegi { padding-left: 0; margin-top: 12px; }   /* метки без отступа списка */
+.itogi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 20px 0; }
+.itog { border-radius: 16px; padding: 16px 18px; }
+.itog .chislo { margin: 0 0 4px; font-size: 32px; }
+.itog span { font-size: 13.5px; color: var(--tekst-tihiy); display: block; }
+.karta { border-radius: var(--radius); padding: 24px 26px; margin: 18px 0; }
+.karta__metki { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 8px; }
+.karta__metki .pil { white-space: normal; }   /* длинные метки переносятся, иначе на телефоне страница уезжает вбок */
+.dve { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.nomer { display: inline-block; font: 700 14px Consolas, monospace; background: rgba(185, 173, 255, .16); color: var(--akcent); padding: 2px 8px; border-radius: 6px; vertical-align: 3px; margin-right: 4px; }
+
+/* метки важности и прочие "пилюли" */
+.pil { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: rgba(255, 255, 255, .08); color: #dcd7ea; white-space: nowrap; }
+.pil--vys { background: rgba(255, 82, 82, .16); color: var(--vys); }
+.pil--sred { background: rgba(255, 171, 64, .15); color: var(--sred); }
+.pil--niz { background: rgba(102, 187, 106, .15); color: var(--niz); }
+.pil--ok { background: rgba(102, 187, 106, .15); color: var(--niz); }
+
+/* таблицы */
+.tablica { overflow-x: auto; border-radius: 16px; margin: 14px 0; }
+.tablica table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.tablica th, .tablica td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, .09); vertical-align: top; }
+.tablica th { color: var(--tekst-tihiy); font-weight: 600; background: rgba(255, 255, 255, .04); }
+.tablica tr:last-child td { border-bottom: 0; }
+
+/* скриншоты */
+.snimki { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
+.snimok { margin: 0; flex: 1 1 100%; }
+.snimok--telefon { flex: 0 1 300px; }
+.snimok a { display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--kraj); background: #fff; }
+.snimok img { width: 100%; }
+.snimok figcaption { font-size: 13px; color: var(--tekst-tihiy); margin-top: 6px; }
+
+/* лог, код */
+.log, .kod { background: rgba(0, 0, 0, .35); border: 1px solid var(--kraj); color: #e9e6f2; font: 13px/1.55 Consolas, monospace; padding: 12px 14px; border-radius: 10px; overflow-x: auto; white-space: pre-wrap; word-break: break-word; margin: 12px 0 0; }
+.log .sery { color: var(--tekst-tihiy); }
+code { font: 13.5px Consolas, monospace; background: rgba(255, 255, 255, .08); padding: 1px 6px; border-radius: 5px; }
+
+.dalshe { display: flex; justify-content: space-between; gap: 14px; margin-top: 50px; flex-wrap: wrap; }
+
+/* ---------- 10. Появление блоков при прокрутке (только если работает JavaScript) ---------- */
+.js .poyavlenie { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.js .poyavlenie.vidno { opacity: 1; transform: none; }
+
+/* ---------- 11. Планшет ---------- */
+@media (max-width: 1100px) {
+  .shapka, .pervyj, .razdel, .podval { margin-left: 24px; margin-right: 24px; }
+  .stranica { padding-left: 24px; padding-right: 24px; }
+  .rezultaty { grid-template-columns: repeat(2, 1fr); }
+  .razbory, .proekty { grid-template-columns: repeat(2, 1fr); }
+  .razbor--shirokij { grid-column: span 2; }
+  .plashka--1 { left: -60px; }
+  .plashka--2 { right: -20px; }
+}
+
+/* ---------- 12. Телефон ---------- */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .shapka { margin: 10px 12px 0; top: 8px; padding: 8px 8px 8px 16px; flex-wrap: wrap; }
+  .shapka__burger { display: block; }
+  .shapka__rezyume { display: none; }
+  /* на телефоне меню прячется под кнопку и раскрывается списком */
+  .shapka__menu { display: none; order: 3; width: 100%; flex-direction: column; gap: 0; padding: 6px 0 4px; }
+  .shapka--otkryto .shapka__menu { display: flex; }
+  .shapka__menu a { padding: 12px 4px; border-top: 1px solid rgba(255, 255, 255, .08); font-size: 16px; }
+  .shapka--otkryto .shapka__burger span { background: transparent; }
+  .shapka--otkryto .shapka__burger span::before { transform: translateY(6px) rotate(45deg); }
+  .shapka--otkryto .shapka__burger span::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .pervyj { grid-template-columns: 1fr; gap: 44px; padding: 40px 0 50px; margin: 0 16px; }
+  .pervyj h1 { font-size: 38px; }
+  .pervyj__tekst { font-size: 17px; }
+  .pervyj__knopki .knopka { flex: 1 1 100%; text-align: center; }
+  .pervyj__fakty { gap: 22px; }
+  .foto { max-width: 300px; margin: 0 auto; }
+  .plashka--1 { width: 160px; left: -30px; bottom: 96px; }
+  .plashka--2 { width: 150px; right: -28px; bottom: 10px; }
+
+  .razdel { margin: 0 16px; padding: 10px 0 60px; }
+  .razdel__shapka { flex-direction: column; align-items: start; }
+  .razdel h2 { font-size: 30px; }
+  .rezultaty, .razbory, .proekty, .navyki, .opyt { grid-template-columns: 1fr; }
+  .razbor--shirokij { grid-column: auto; }
+  .rezultat__kartinka { height: 150px; }
+  .kontakty { grid-template-columns: 1fr; padding: 30px 22px; gap: 20px; }
+  .kontakty h2 { font-size: 30px; }
+  .podval { margin: 0 16px; }
+
+  .stranica { padding: 30px 16px 60px; }
+  .stranica h1 { font-size: 32px; }
+  .stranica h2 { font-size: 24px; }
+  .itogi { grid-template-columns: 1fr 1fr; }
+  .dve { grid-template-columns: 1fr; gap: 0; }
+  .blok, .karta { padding: 18px; }
+  .snimok--telefon { flex: 1 1 100%; max-width: 320px; }
+}
+
+/* ---------- 13. Если в системе включено "уменьшить движение", анимация выключается ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .poyavlenie { opacity: 1; transform: none; }
+}
+
+/* снимок в карточке проекта */
+.proekt__kartinka { height: 170px; overflow: hidden; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--kraj); }
+.proekt__kartinka img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
