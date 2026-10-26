@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Краулер для SEO-аудита без лимита страниц: проект Марии Колодницкой</title>
+<link rel="canonical" href="https://maxwhyou.github.io/proekty/krauler.html">
+<meta property="og:url" content="https://maxwhyou.github.io/proekty/krauler.html">
+<meta name="description" content="Свой краулер на Python с окном в браузере: обходит сайт без ограничения на число страниц, находит дубли, битые ссылки, картинки и файлы, редиректы и ошибки canonical.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Краулер для SEO-аудита без лимита страниц: проект Марии Колодницкой">
+<meta property="og:description" content="Свой краулер на Python с окном в браузере: обходит сайт без ограничения на число страниц, находит дубли, битые ссылки, картинки и файлы, редиректы и ошибки canonical.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#instrumenty">Инструменты</a> / Краулер для SEO-аудита</nav>
+<p class="mono"><span class="metka-proekta">рабочий инструмент · вайб-кодинг</span></p>
+<h1>Краулер <em>(без лимита)</em> страниц</h1>
+
+<p class="meta">Python без сторонних библиотек, окно в браузере. Сделала с Claude Code в сентябре 2026, в октябре доработала по тому, что мешало в работе.</p>
+<div class="blok steklo">
+  <h3>Зачем</h3>
+  <p>Бесплатный Screaming Frog обходит только 500 адресов, а у клиентских сайтов страниц больше: у сайта медцентра около 3300. Платные краулеры дорогие, а взломанные версии опасно ставить на рабочий ноутбук. Поэтому сделала свой.</p>
+</div>
+<figure class="snimok"><a href="../img/proekty/krauler.webp" aria-label="Открыть скриншот целиком: Обход этого сайта: таблица страниц слева, проверки справа, подробности о выбранной странице внизу"><img src="../img/proekty/krauler.webp" width="1600" height="1000" alt="Обход этого сайта: таблица страниц слева, проверки справа, подробности о выбранной странице внизу" loading="lazy" decoding="async"></a><figcaption>Обход этого сайта: таблица страниц слева, проверки справа, подробности о выбранной странице внизу</figcaption></figure>
+<h2>Что находит</h2>
+<div class="dve">
+  <div class="karta steklo"><h3>Обход и индексация</h3><ul>
+    <li>Коды ответа, страницы без ответа, закрытое в robots.txt</li>
+    <li>Битые ссылки с местом, где они стоят, и текстом ссылки</li>
+    <li>Битые картинки и ссылки на файлы: pdf, doc, xls</li>
+    <li>Цепочки и петли редиректов, редирект через meta refresh</li>
+    <li>Страницы не из sitemap и sitemap с неиндексируемыми страницами</li>
+    <li>Поддомены: по SSL-сертификатам, частым именам и ссылкам</li></ul></div>
+  <div class="karta steklo"><h3>SEO</h3><ul>
+    <li>Пустые и одинаковые Title, Description, H1</li>
+    <li>Canonical на пагинации и canonical, который ведёт на 404, редирект или noindex</li>
+    <li>noindex в meta robots и отдельно для Яндекса</li>
+    <li>Длина тегов, несколько тегов на странице, мало текста</li>
+    <li>Картинки без alt</li>
+    <li>Ошибки в hreflang</li></ul></div>
+</div>
+<h2>Как проверяла</h2>
+<div class="blok steklo">
+  <p>Собрала маленький тестовый сайт и специально разложила по нему ошибки: битая картинка, картинка с отложенной загрузкой, ссылка на несуществующий PDF, canonical на страницу 404, редирект через meta refresh, noindex только для Яндекса, ссылка из карты-картинки. Краулер нашёл все, а рабочий PDF и живую картинку битыми не посчитал.</p>
+  <p>Раньше он молча пропускал ссылки на файлы и вообще не смотрел картинки. Нашла это, когда сравнивала его находки с ручной проверкой.</p>
+</div>
+<h2>Удобство</h2>
+<div class="blok steklo"><ul>
+  <li>Таблица рисует только видимые строки, поэтому не тормозит и на 50 000 адресов</li>
+  <li>Ширина столбцов тянется мышкой, столбцы переставляются, длинный Title виден целиком</li>
+  <li>Адрес копируется кнопкой или Ctrl+C, все адреса таблицы копируются столбцом для Excel</li>
+  <li>Каждая проверка выгружается в Excel, прошлые обходы открываются из истории</li>
+</ul></div>
+<nav class="dalshe" aria-label="Другие инструменты"><a class="knopka" href="../#instrumenty">Все инструменты</a><a class="knopka" href="seo-pomoshnik.html">Дальше: SEO-помощник для Opera</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO-помощник: Вордстат, кластеры и ответы нейросетей, проект Марии Колодницкой</title>
+<link rel="canonical" href="https://maxwhyou.github.io/proekty/seo-pomoshnik.html">
+<meta property="og:url" content="https://maxwhyou.github.io/proekty/seo-pomoshnik.html">
+<meta name="description" content="Расширение для Opera и Chrome: сбор запросов из Вордстата, кластеризация по выдаче Яндекса и проверка, что Алиса AI, ChatGPT и DeepSeek говорят о компании.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SEO-помощник: Вордстат, кластеры и ответы нейросетей, проект Марии Колодницкой">
+<meta property="og:description" content="Расширение для Opera и Chrome: сбор запросов из Вордстата, кластеризация по выдаче Яндекса и проверка, что Алиса AI, ChatGPT и DeepSeek говорят о компании.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#instrumenty">Инструменты</a> / SEO-помощник для Opera</nav>
+<p class="mono"><span class="metka-proekta">рабочий инструмент · вайб-кодинг</span></p>
+<h1>SEO-помощник <em>(для Opera)</em></h1>
+
+<p class="meta">Расширение для Opera и Chrome на JavaScript. Сделала с Claude Code в октябре 2026.</p>
+<div class="blok steklo">
+  <h3>Зачем</h3>
+  <p>Сбор семантики руками занимает часы: Вордстат, потом Арсенкин, который часто зависает. А проверить, называют ли компанию нейросети в своих ответах, раньше было вообще нечем. Расширение работает под входом пользователя в его браузере: без ключей, паролей и оплаты. Если сервис показывает капчу, работа встаёт на паузу, и проверку проходит человек.</p>
+</div>
+<h2>Сбор из Вордстата</h2>
+<p>Левая и правая колонки по каждой фразе, второй круг по найденным фразам, точная частотность в кавычках и с восклицательными знаками. Минус-слова не удаляют фразы, а переносят в мусор: по слову "маркизы" Вордстат приносит фильм про Анжелику и маркиза де Сада, их видно и можно вернуть.</p>
+<figure class="snimok"><a href="../img/proekty/sp-vordstat.webp" aria-label="Открыть скриншот целиком: Настоящие данные Вордстата по Москве: фразы с минус-словами зачёркнуты и ушли в мусор"><img src="../img/proekty/sp-vordstat.webp" width="1400" height="900" alt="Настоящие данные Вордстата по Москве: фразы с минус-словами зачёркнуты и ушли в мусор" loading="lazy" decoding="async"></a><figcaption>Настоящие данные Вордстата по Москве: фразы с минус-словами зачёркнуты и ушли в мусор</figcaption></figure>
+<h2>Кластеры по выдаче Яндекса</h2>
+<p>По каждой фразе помощник берёт топ-10 Яндекса без рекламы и сервисов Яндекса. Фразы с общими сайтами в топе попадают в одну группу: Hard для коммерческих запросов, Soft для информационных. Выдача запоминается, порог можно менять без новых запросов.</p>
+<figure class="snimok"><a href="../img/proekty/sp-klastery.webp" aria-label="Открыть скриншот целиком: Группы по настоящей выдаче Яндекса в Москве"><img src="../img/proekty/sp-klastery.webp" width="893" height="375" alt="Группы по настоящей выдаче Яндекса в Москве" loading="lazy" decoding="async"></a><figcaption>Группы по настоящей выдаче Яндекса в Москве</figcaption></figure>
+<h2>Ответы нейросетей</h2>
+<p>Помощник задаёт вопросы покупателей Алисе AI в поиске Яндекса, ChatGPT и DeepSeek и считает, где компанию называют, где ставят ссылку на сайт и кого называют вместо неё. Выводы "что хорошо" и "что не так" строятся по правилам из самих ответов. Каждая проверка сохраняется с датой, поэтому видно, как картина меняется от месяца к месяцу.</p>
+<figure class="snimok"><a href="../img/proekty/seo-pomoshnik.webp" aria-label="Открыть скриншот целиком: Отчёт на настоящем ответе Алисы AI. Сайт ttex.ru взят только для примера"><img src="../img/proekty/seo-pomoshnik.webp" width="1400" height="900" alt="Отчёт на настоящем ответе Алисы AI. Сайт ttex.ru взят только для примера" loading="lazy" decoding="async"></a><figcaption>Отчёт на настоящем ответе Алисы AI. Сайт ttex.ru взят только для примера</figcaption></figure>
+<h2>Как проверяла</h2>
+<div class="blok steklo"><ul>
+  <li>Цифры из Вордстата сверила с таблицей в самом Вордстате: совпали один в один</li>
+  <li>По коммерческим запросам на первой странице Яндекса бывает всего 5-6 обычных сайтов, остальное реклама и товары. Помощник добирает топ-10 со второй страницы</li>
+  <li>Нашла, что Яндекс встраивает в ответ Алисы AI рекламный блок. Помощник выносит его отдельно, чтобы реклама не считалась упоминанием</li>
+  <li>ChatGPT сменил разметку страницы, и старое чтение ответа перестало работать. Теперь поддерживаются обе версии, а источники берутся даже из значков сайтов</li>
+</ul></div>
+<nav class="dalshe" aria-label="Другие инструменты"><a class="knopka" href="../#instrumenty">Все инструменты</a><a class="knopka" href="krauler.html">Дальше: Краулер для SEO-аудита</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>
