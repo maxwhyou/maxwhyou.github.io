@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ритм: тренировки дома с таймером, учебный UX-проект Марии Колодницкой</title>
+<link rel="canonical" href="https://maxwhyou.github.io/proekty/mini-fitnes.html">
+<meta property="og:url" content="https://maxwhyou.github.io/proekty/mini-fitnes.html">
+<meta name="description" content="Учебный проект: упражнения с анимированными подсказками, фильтр без прыжков, конструктор тренировки и таймер, который не сбивается в фоне.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ритм: тренировки дома с таймером, учебный UX-проект Марии Колодницкой">
+<meta property="og:description" content="Учебный проект: упражнения с анимированными подсказками, фильтр без прыжков, конструктор тренировки и таймер, который не сбивается в фоне.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=056fab02">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js?v=423aa71b" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#mini">Мини-сайты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#mini">Мини-сайты</a> / Ритм: тренировки дома</nav>
+<p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+<h1>Ритм <em>(тренировки дома)</em></h1>
+
+<p class="meta">Учебный проект, октябрь 2026. HTML, CSS и JavaScript без библиотек, человечки нарисованы кодом в SVG. Тренировка хранится в браузере.</p>
+<div class="ssylki-proekta"><a class="knopka knopka--glav" href="../mini/fitnes/">Открыть сайт</a></div>
+<div class="dve">
+  <div class="blok steklo"><h3>Задача</h3><p>Короткая тренировка без инвентаря, которую можно сделать в перерыве, не зная техники заранее и не мешая соседям снизу.</p></div>
+  <div class="blok steklo"><h3>Для кого</h3><p>Люди, которые работают за компьютером и хотят размяться дома 5-10 минут. Телефон лежит рядом на полу, поэтому всё должно быть видно издалека.</p></div>
+</div>
+<figure class="snimok"><a href="../img/mini/fit-pk.webp" aria-label="Открыть скриншот целиком: Первый экран и готовые тренировки: длительность посчитана заранее"><img src="../img/mini/fit-pk.webp" width="1440" height="900" alt="Первый экран и готовые тренировки: длительность посчитана заранее" loading="lazy" decoding="async"></a><figcaption>Первый экран и готовые тренировки: длительность посчитана заранее</figcaption></figure>
+<h2>Решения и почему</h2>
+<div class="dve">
+  <div class="karta steklo"><h3>Упражнения</h3><ul>
+    <li>У каждого упражнения человечек с двумя позами, между которыми он плавно двигается. Оживает при наведении мыши и при переходе клавиатурой</li>
+    <li>При системной настройке "уменьшить движение" человечки стоят на месте</li>
+    <li>Фильтр "Тихо для соседей" убирает прыжки</li>
+    <li>Готовые тренировки можно запустить сразу или взять за основу и изменить</li>
+    <li>Порядок в своей тренировке меняется кнопками "выше" и "ниже": перетаскивание неудобно на телефоне и недоступно с клавиатуры</li></ul></div>
+  <div class="karta steklo"><h3>Таймер</h3><ul>
+    <li>Считает от времени окончания шага, а не вычитает по секунде: так не отстаёт, если вкладка была в фоне</li>
+    <li>Не даёт экрану погаснуть посреди планки</li>
+    <li>Цифры и цвет фазы видно с пола: работа лаймовая, отдых голубой</li>
+    <li>Пробел ставит паузу. Esc сначала останавливает тренировку и показывает итог, второй Esc закрывает окно</li>
+    <li>Скринридер объявляет только смену шага, а не каждую секунду</li>
+    <li>Звук на последних трёх секундах, отключается кнопкой</li></ul></div>
+</div>
+<div class="snimki"><figure class="snimok"><a href="../img/mini/fit-katalog.webp" aria-label="Открыть скриншот целиком: Каталог с включённым фильтром Тихо: прыжков нет, три упражнения добавлены"><img src="../img/mini/fit-katalog.webp" width="1440" height="900" alt="Каталог с включённым фильтром Тихо: прыжков нет, три упражнения добавлены" loading="lazy" decoding="async"></a><figcaption>Каталог с включённым фильтром Тихо: прыжков нет, три упражнения добавлены</figcaption></figure><figure class="snimok"><a href="../img/mini/fit-tajmer.webp" aria-label="Открыть скриншот целиком: Таймер: фаза, секунды, человечек и что будет дальше"><img src="../img/mini/fit-tajmer.webp" width="1440" height="900" alt="Таймер: фаза, секунды, человечек и что будет дальше" loading="lazy" decoding="async"></a><figcaption>Таймер: фаза, секунды, человечек и что будет дальше</figcaption></figure></div>
+<h2>Как проверяла</h2>
+<p>Таймер проверяла на коротких шагах по 1-2 секунды, чтобы пройти тренировку целиком за 10 секунд, и на обычных 30 секундах в Edge с настоящими нажатиями клавиш.</p>
+<div class="tablica steklo"><table><tr><th>№</th><th>Что проверяю</th><th>Действие</th><th>Ожидаю</th><th>Получила</th><th>Итог</th></tr><tr><td>1</td><td>Фильтр Тихо</td><td>Включить</td><td>Без прыжков</td><td>15 упражнений из 18</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>2</td><td>Тихо и сложные</td><td>Добавить "Сложные"</td><td>Сложные без прыжков</td><td>"Отжимания", "Боковая планка"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>3</td><td>Пустой результат</td><td>Добавить "Ноги"</td><td>Подсказка, почему пусто</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>4</td><td>Длительность</td><td>3 упражнения, 30/15 секунд</td><td>5 + 3 × 30 + 2 × 15 = 125 секунд</td><td>"2 мин 5 с"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>5</td><td>Круги</td><td>2 круга</td><td>5 + 6 × 30 + 5 × 15 = 260 секунд</td><td>"4 мин 20 с"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>6</td><td>Порядок</td><td>Нажать "Ниже" у первого</td><td>Упражнение ниже, фокус остаётся на нём</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>7</td><td>Удаление</td><td>Убрать последнее</td><td>Фокус на соседнем</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>8</td><td>Старт с клавиатуры</td><td>Enter на "Начать тренировку"</td><td>Подготовка 5 секунд, фокус на "Пауза"</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>9</td><td>Пауза</td><td>Пробел, подождать 1,5 секунды</td><td>Время стоит</td><td>секунды не изменились</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>10</td><td>Прогресс</td><td>Прошло 5,3 из 10 секунд</td><td>Полоса примерно на половине</td><td>52%</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>11</td><td>Первый Esc</td><td>Esc во время работы</td><td>Тренировка остановлена, окно открыто</td><td>"Тренировка остановлена"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>12</td><td>Второй Esc</td><td>Esc ещё раз</td><td>Окно закрыто, фокус на кнопке запуска</td><td>фокус на "Начать тренировку"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>13</td><td>Конец тренировки</td><td>Дождаться конца</td><td>Итог и кнопка "Ещё раз" в фокусе</td><td>"Отличная работа!", фокус на "Ещё раз"</td><td><span class="pil pil--ok">пройдено</span></td></tr></table></div>
+<h2>Что нашла и исправила</h2>
+<div class="blok steklo"><ul>
+  <li><b>Птица-собака поднимала руку и ногу одной стороны.</b> Собрала все 18 поз на один лист и проверила глазами: в упражнении должны подниматься противоположные рука и нога.</li>
+  <li><b>Пустое окно таймера.</b> Окно открывалось на долю секунды без цифр, пока браузер включал запрет на выключение экрана. Теперь сначала рисуется шаг.</li>
+  <li><b>Первый вариант Esc</b> закрывал окно сразу, и человек не видел, сколько успел сделать.</li>
+  <li><b>"2 секунд".</b> Голосовое объявление не склоняло слово "секунда".</li>
+  <li><b>Окно таймера прокручивалось</b> на ноутбуке с низким экраном: размер цифр и человечка теперь зависит и от высоты экрана.</li>
+</ul><p>axe не находит нарушений WCAG 2.1 A и AA на странице, в своей тренировке и в окне таймера.</p></div>
+<div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/mini/fit-tel-tajmer.webp" aria-label="Открыть скриншот целиком: Таймер на телефоне: всё помещается на одном экране"><img src="../img/mini/fit-tel-tajmer.webp" width="600" height="1299" alt="Таймер на телефоне: всё помещается на одном экране" loading="lazy" decoding="async"></a><figcaption>Таймер на телефоне: всё помещается на одном экране</figcaption></figure><figure class="snimok"><a href="../img/mini/fit-moya.webp" aria-label="Открыть скриншот целиком: Своя тренировка: порядок кнопками, время считается сразу"><img src="../img/mini/fit-moya.webp" width="1440" height="900" alt="Своя тренировка: порядок кнопками, время считается сразу" loading="lazy" decoding="async"></a><figcaption>Своя тренировка: порядок кнопками, время считается сразу</figcaption></figure></div>
+<p class="meta">Сайт не заменяет тренера и врача, об этом сказано вверху страницы и перед готовыми тренировками.</p>
+<nav class="dalshe" aria-label="Другие мини-сайты"><a class="knopka" href="../#mini">Все мини-сайты</a><a class="knopka" href="mini-kozha.html">Дальше: Слой: уход за кожей</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>

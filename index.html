@@ -14,9 +14,9 @@
 <meta name="theme-color" content="#0f0d12">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=49112786">
+<link rel="stylesheet" href="css/style.css?v=056fab02">
 <script>document.documentElement.classList.add('js')</script>
-<script src="js/main.js?v=ebc44c18" defer></script>
+<script src="js/main.js?v=423aa71b" defer></script>
 </head>
 <body>
 <a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
@@ -24,7 +24,7 @@
 
 <header class="shapka">
   <a class="shapka__imya" href="./">Мария Колодницкая</a>
-  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="#keysy">Кейсы</a><a href="#instrumenty">Инструменты</a><a href="#obo-mne">Обо мне</a><a href="#kontakty">Контакты</a></nav>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="#keysy">Кейсы</a><a href="#instrumenty">Инструменты</a><a href="#mini">Мини-сайты</a><a href="#obo-mne">Обо мне</a><a href="#kontakty">Контакты</a></nav>
   <div class="shapka__pravo">
     <a class="knopka shapka__rezyume" href="files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
     <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
@@ -42,9 +42,12 @@
       <a class="knopka" href="https://t.me/maxwhyou">Написать в Telegram</a>
     </div>
   </div>
-  <figure class="foto"><img src="img/delovoe-foto-za-noutbukom.webp" width="900" height="1200" alt="Мария Колодницкая за работой" fetchpriority="high"><figcaption class="mono">[ за работой ]</figcaption></figure>
+  <figure class="foto" data-foto>
+    <div class="foto__ramka"><img class="foto__img" src="img/delovoe-foto-za-noutbukom.webp" width="900" height="1200" alt="Мария Колодницкая за работой" fetchpriority="high"></div>
+    <figcaption class="mono"><span>[ за работой ]</span><span>2026</span></figcaption>
+  </figure>
   <div class="pervyj__niz mono">
-    <ul class="glavy-spisok"><li><a href="#keysy">01 кейсы</a></li><li><a href="#instrumenty">02 инструменты</a></li><li><a href="#obo-mne">03 обо мне</a></li><li><a href="#kontakty">04 контакты</a></li></ul>
+    <ul class="glavy-spisok"><li><a href="#keysy">01 кейсы</a></li><li><a href="#instrumenty">02 инструменты</a></li><li><a href="#mini">03 мини-сайты</a></li><li><a href="#obo-mne">04 обо мне</a></li><li><a href="#kontakty">05 контакты</a></li></ul>
     <span class="podskazka-mysh">[ поводи мышкой по воде ]</span>
   </div>
 </section>
@@ -90,46 +93,91 @@
 <section class="glava" id="instrumenty" aria-labelledby="z-instrumenty">
   <div class="glava__shapka">
     <div><p class="mono">[ 02 инструменты ]</p><h2 id="z-instrumenty">Программы, которые <em>(сделала)</em> для работы</h2></div>
-    <p class="glava__pod">Мои личные проекты на вайб-кодинге: ставлю задачу Claude Code, проверяю результат и довожу до рабочего состояния. Пользуюсь ими в работе.</p>
+    <p class="glava__pod">Инструменты, которые ускоряют проверку сайтов: находят ошибки, собирают данные о людях и оформляют результат. Мои личные проекты на вайб-кодинге: ставлю задачу Claude Code, проверяю результат и довожу до рабочего состояния.</p>
   </div>
   <div class="instrumenty"><article class="kartochka poyavlenie">
       <p class="mono"><span class="metka-proekta">рабочий инструмент · вайб-кодинг</span></p>
       <div class="kartochka__kartinka"><img src="img/proekty/krauler.webp" width="1400" height="875" alt="Краулер для SEO-аудита: снимок экрана" loading="lazy" decoding="async"></div>
       <h3><a class="rasyanut" href="proekty/krauler.html">Краулер для SEO-аудита</a></h3>
-      <p>Обходит сайт без лимита страниц и сразу показывает дубли и пустые теги, битые ссылки, картинки и файлы, цепочки редиректов, canonical на 404.</p>
+      <p>Проверяет весь сайт целиком, как автотест: битые ссылки, картинки и файлы, ошибки сервера, цепочки редиректов, страницы, закрытые от поиска. Без лимита страниц.</p>
       <div class="kartochka__niz"><ul class="tegi"><li>Python</li><li>интерфейс в браузере</li><li>без зависимостей</li></ul></div>
     </article><article class="kartochka poyavlenie">
       <p class="mono"><span class="metka-proekta">рабочий инструмент · вайб-кодинг</span></p>
       <div class="kartochka__kartinka"><img src="img/proekty/seo-pomoshnik.webp" width="1400" height="900" alt="SEO-помощник для Opera: снимок экрана" loading="lazy" decoding="async"></div>
       <h3><a class="rasyanut" href="proekty/seo-pomoshnik.html">SEO-помощник для Opera</a></h3>
-      <p>Расширение браузера: собирает запросы из Вордстата, разбивает их на группы по выдаче Яндекса и проверяет, что Алиса AI, ChatGPT и DeepSeek говорят о компании.</p>
+      <p>Исследование людей через поиск: что они спрашивают, как группируются их вопросы и что о компании отвечают Алиса AI, ChatGPT и DeepSeek. Расширение для браузера.</p>
       <div class="kartochka__niz"><ul class="tegi"><li>JavaScript</li><li>расширение Chrome и Opera</li><li>графики</li></ul></div>
+    </article><article class="kartochka poyavlenie">
+      <p class="mono"><span class="metka-proekta">рабочий инструмент · вайб-кодинг</span></p>
+      <div class="kartochka__kartinka"><img src="img/proekty/bag-reporter.webp" width="1400" height="900" alt="Баг-репортёр: снимок экрана" loading="lazy" decoding="async"></div>
+      <h3><a class="rasyanut" href="proekty/bag-reporter.html">Баг-репортёр</a></h3>
+      <p>Баг-репорт в один клик: снимок экрана с пометками и размытием личных данных, окружение, ошибки консоли и сети, готовый текст для Jira.</p>
+      <div class="kartochka__niz"><ul class="tegi"><li>JavaScript</li><li>расширение Chrome и Opera</li><li>Canvas</li></ul></div>
+    </article></div>
+</section>
+
+<section class="glava" id="mini" aria-labelledby="z-mini">
+  <div class="glava__shapka">
+    <div><p class="mono">[ 03 мини-сайты ]</p><h2 id="z-mini">Сайты, которые <em>(придумала)</em> для людей</h2></div>
+    <p class="glava__pod">Учебные проекты целиком: решаю, для кого сайт и что ему мешает, рисую прототип, верстаю и проверяю как тестировщик: тест-кейсы, клавиатура, скринридер, телефон. Нажми на карточку, чтобы прочитать разбор.</p>
+  </div>
+  <div class="mini-sajty"><article class="kartochka poyavlenie">
+      <p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+      <div class="kartochka__kartinka"><img src="img/mini/kot-pk.webp" width="1440" height="900" alt="Мурчалка: приют котят: первый экран" loading="lazy" decoding="async"></div>
+      <h3><a class="rasyanut" href="proekty/mini-kotyata.html">Мурчалка: приют котят</a></h3>
+      <p>Подбор котёнка под свою жизнь, окно с историей и заявка, где ошибки объясняют, что исправить. Прототип в Figma и 15 проверок.</p>
+      <div class="kartochka__niz"><ul class="tegi"><li>UX</li><li>Figma</li><li>формы</li><li>доступность</li></ul></div>
+    </article><article class="kartochka poyavlenie">
+      <p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+      <div class="kartochka__kartinka"><img src="img/mini/mult-pk.webp" width="1440" height="900" alt="Мультотека: первый экран" loading="lazy" decoding="async"></div>
+      <h3><a class="rasyanut" href="proekty/mini-multfilmy.html">Мультотека</a></h3>
+      <p>Советские мультфильмы по свободному времени. Подборка на вечер считает, сколько займёт просмотр, а пустой поиск подсказывает, какой фильтр убрать.</p>
+      <div class="kartochka__niz"><ul class="tegi"><li>UX</li><li>фильтры</li><li>пустые состояния</li></ul></div>
+    </article><article class="kartochka poyavlenie">
+      <p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+      <div class="kartochka__kartinka"><img src="img/mini/fit-pk.webp" width="1440" height="900" alt="Ритм: тренировки дома: первый экран" loading="lazy" decoding="async"></div>
+      <h3><a class="rasyanut" href="proekty/mini-fitnes.html">Ритм: тренировки дома</a></h3>
+      <p>Человечки показывают движение, фильтр "Тихо" убирает прыжки, таймер не сбивается в фоне и не даёт экрану погаснуть.</p>
+      <div class="kartochka__niz"><ul class="tegi"><li>UX</li><li>таймер</li><li>анимация</li><li>доступность</li></ul></div>
+    </article><article class="kartochka poyavlenie">
+      <p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+      <div class="kartochka__kartinka"><img src="img/mini/kozha-pk.webp" width="1440" height="900" alt="Слой: уход за кожей: первый экран" loading="lazy" decoding="async"></div>
+      <h3><a class="rasyanut" href="proekty/mini-kozha.html">Слой: уход за кожей</a></h3>
+      <p>Тест на тип кожи по одному вопросу, схема на утро и вечер и проверка, какие компоненты нельзя наносить вместе.</p>
+      <div class="kartochka__niz"><ul class="tegi"><li>UX</li><li>тест</li><li>тексты</li></ul></div>
     </article></div>
 </section>
 
 <section class="glava" id="obo-mne" aria-labelledby="z-obo-mne">
   <div class="glava__shapka">
-    <div><p class="mono">[ 03 обо мне ]</p><h2 id="z-obo-mne">Почти три года <em>(в&nbsp;SEO)</em></h2></div>
-    <p class="glava__pod">Из SEO беру главное: умение находить, где сайт ломается и мешает человеку, и доводить это до исправления. Цифры только за период, когда проект вела я.</p>
+    <div><p class="mono">[ 04 обо мне ]</p><h2 id="z-obo-mne">SEO научило <em>(искать&nbsp;ошибки)</em></h2></div>
+    <p class="glava__pod">Почти три года в SEO: технические аудиты, приёмка доработок у разработчиков, анализ поведения людей на сайте. Это та же работа тестировщика и UX-исследователя, только с другой целью. Нажми на проект, чтобы прочитать подробно.</p>
   </div>
-  <div class="cifry"><article class="cifra poyavlenie">
+  <div class="obo-mne__verh">
+    <div class="model poyavlenie" data-model="img/3d/mariya.glb" data-skript="./model3d.js?v=dffaf719">
+      <p class="model__podpis mono">[ 3D · покрути меня ]</p>
+      <p class="model__zaglushka mono">загружаю 3D-модель</p>
+      <p class="model__pod mono">сделана нейросетью Hunyuan3D по фото</p>
+    </div>
+    <div class="cifry"><article class="cifra poyavlenie">
       <b class="perelivy">в 15 раз</b>
-      <p><a class="rasyanut" href="kejsy/seo-rezultaty.html#tipografiya">больше запросов в топ-10 Яндекса</a></p>
+      <p><a class="rasyanut" href="rabota/tipografiya.html">больше запросов в топ-10 Яндекса</a></p>
       <span class="mono">Типография, Краснодар</span>
     </article><article class="cifra poyavlenie">
       <b class="perelivy">вдвое</b>
-      <p><a class="rasyanut" href="kejsy/seo-rezultaty.html#klinika-eko">больше запросов в топ-10, падение трафика остановлено</a></p>
+      <p><a class="rasyanut" href="rabota/klinika-eko.html">больше запросов в топ-10, падение трафика остановлено</a></p>
       <span class="mono">Клиника ЭКО, Москва</span>
     </article><article class="cifra poyavlenie">
       <b class="perelivy">+60%</b>
-      <p><a class="rasyanut" href="kejsy/seo-rezultaty.html#zavod">визитов из поиска за три месяца</a></p>
+      <p><a class="rasyanut" href="rabota/zavod.html">визитов из поиска за три месяца</a></p>
       <span class="mono">Завод деталей турбин, Уфа</span>
     </article><article class="cifra poyavlenie">
       <b class="perelivy">+35%</b>
-      <p><a class="rasyanut" href="kejsy/seo-rezultaty.html#detskij-centr">запросов в топ-10 Яндекса</a></p>
+      <p><a class="rasyanut" href="rabota/detskij-centr.html">запросов в топ-10 Яндекса</a></p>
       <span class="mono">Детский образовательный центр, Москва</span>
     </article></div>
-  <a class="vse-ssylka" href="kejsy/seo-rezultaty.html">Все результаты со скриншотами из Топвизора и Метрики</a>
+  </div>
+  <a class="vse-ssylka" href="kejsy/seo-rezultaty.html">Все результаты на одной странице, со скриншотами из Топвизора и Метрики</a>
   <div class="dva-stolbca">
     <div class="panel poyavlenie">
       <p class="mono">[ опыт ]</p>
@@ -156,14 +204,20 @@
 </section>
 
 <section class="glava kontakty" id="kontakty" aria-labelledby="z-kontakty">
-  <p class="mono">[ 04 контакты ]</p>
-  <h2 id="z-kontakty">Давайте <em>(поговорим)</em></h2>
-  <p>Ищу работу в QA и UX/UI-исследованиях. Удобнее всего написать в Telegram, отвечаю в течение дня.</p>
-  <div class="kontakty__spisok">
-    <a class="knopka knopka--glav" href="https://t.me/maxwhyou">Telegram: @maxwhyou</a>
-    <a class="knopka" href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a>
-    <a class="knopka" href="files/Kolodnitskaya-Mariya-SEO.pdf">Скачать резюме PDF</a>
+  <div class="kontakty__tekst">
+    <p class="mono">[ 05 контакты ]</p>
+    <h2 id="z-kontakty">Давайте <em>(поговорим)</em></h2>
+    <p>Ищу работу в QA и UX/UI-исследованиях. Удобнее всего написать в Telegram, отвечаю в течение дня.</p>
+    <div class="kontakty__spisok">
+      <a class="knopka knopka--glav" href="https://t.me/maxwhyou">Telegram: @maxwhyou</a>
+      <a class="knopka" href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a>
+      <a class="knopka" href="files/Kolodnitskaya-Mariya-SEO.pdf">Скачать резюме PDF</a>
+    </div>
   </div>
+  <figure class="foto foto--kontakty poyavlenie" data-foto>
+    <div class="foto__ramka"><img class="foto__img" src="img/foto-dlya-sayta-po-poyas.webp" width="520" height="650" alt="Мария Колодницкая у окна" loading="lazy"></div>
+    <figcaption class="mono"><span>[ до связи ]</span><span>Мария</span></figcaption>
+  </figure>
 </section>
 </main>
 

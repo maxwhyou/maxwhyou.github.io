@@ -1,0 +1,130 @@
+/* Слой: тёплый крем, пудровый розовый и шалфей. Заголовки антиквой, текст гротеском */
+@font-face { font-family: Cormorant; font-weight: 400 700; font-display: swap; src: url(fonts/cormorant-cyrillic.woff2) format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: Cormorant; font-weight: 400 700; font-display: swap; src: url(fonts/cormorant-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: Onest; font-weight: 200 700; font-display: swap; src: url(fonts/onest-cyrillic.woff2) format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: Onest; font-weight: 200 700; font-display: swap; src: url(fonts/onest-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+
+:root {
+  --fon: #f7f1ec; --karta: #fffdfb; --tekst: #3a2e2b; --tihiy: #6e5f5a; --linii: #eadbd0;
+  --shalfej: #4a6450; --shalfej-svetlyj: #a9bfa9; --pudra: #e8b4a6; --pudra-fon: #f6e4dc;
+  --krasnyj: #a33a2c; --zheltyj: #8a5a00;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }   /* иначе display у кнопок перебивает атрибут hidden */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; background: var(--fon); color: var(--tekst); font: 400 17px/1.65 Onest, "Segoe UI", sans-serif; }
+a { color: var(--shalfej); }
+h1, h2, h3, .logo { font-family: Cormorant, Georgia, serif; font-weight: 600; line-height: 1.05; }
+:focus-visible { outline: 2px solid var(--shalfej); outline-offset: 3px; border-radius: 6px; }
+.propusk { position: absolute; left: 12px; top: -60px; padding: 8px 14px; background: var(--tekst); color: #fff; z-index: 50; }
+.propusk:focus { top: 10px; }
+.uchebnyj { margin: 0; padding: 8px 20px; background: var(--shalfej); color: #fff; font-size: 14px; text-align: center; }
+.uchebnyj a { color: #fff; }
+
+.knopka { display: inline-flex; align-items: center; justify-content: center; padding: 13px 26px; border: 1.5px solid var(--shalfej); border-radius: 999px; background: var(--shalfej); color: #fff; font: 500 16px/1.2 Onest, sans-serif; text-decoration: none; cursor: pointer; transition: background .2s, color .2s; }
+.knopka:hover { background: #3c5241; }
+.knopka--svetlaya { background: transparent; color: var(--shalfej); }
+.knopka--svetlaya:hover { background: #e9efe6; }
+.knopka:disabled { opacity: .4; cursor: default; }
+
+.shapka { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 28px; padding: 14px max(20px, calc(50% - 560px)); background: rgba(247, 241, 236, .94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--linii); }
+.logo { margin-right: auto; font-size: 34px; color: var(--tekst); text-decoration: none; letter-spacing: .02em; }
+.menu { display: flex; gap: 24px; }
+.menu a { color: var(--tekst); text-decoration: none; }
+.menu a:hover { color: var(--shalfej); }
+
+main { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.geroj { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; padding: 60px 0 30px; }
+.nadpis { display: inline-block; margin: 0 0 16px; padding: 4px 14px; border-radius: 999px; background: var(--pudra-fon); color: #7d3f30; font-size: 14px; font-weight: 500; }
+.geroj h1 { margin: 0 0 18px; font-size: clamp(46px, 7vw, 86px); }
+.geroj h1 em { color: var(--shalfej); }
+.geroj p { max-width: 520px; color: var(--tihiy); font-size: 19px; }
+.geroj__knopki { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.geroj__kartinka svg { width: 100%; max-width: 420px; height: auto; display: block; margin: 0 auto; }
+
+.razdel { padding: 56px 0 10px; }
+.razdel h2 { margin: 0 0 8px; font-size: clamp(36px, 4.5vw, 54px); }
+.razdel__pod { margin: 0 0 26px; max-width: 640px; color: var(--tihiy); }
+
+/* тест: одна карточка, вопросы по очереди */
+.test__karta { max-width: 760px; padding: 32px; border-radius: 28px; background: var(--karta); border: 1px solid var(--linii); box-shadow: 0 20px 50px rgba(58, 46, 43, .06); }
+.vopros fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 10px; }
+.vopros legend { margin-bottom: 14px; font: 600 clamp(26px, 3vw, 34px)/1.15 Cormorant, Georgia, serif; }
+.vopros__shag { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; color: var(--tihiy); font-size: 15px; white-space: nowrap; }
+.vopros__polosa { flex: 1; height: 4px; border-radius: 2px; background: var(--linii); overflow: hidden; }
+.vopros__polosa span { display: block; height: 100%; background: var(--shalfej); transition: width .3s; }
+.variant { position: relative; display: block; cursor: pointer; }
+.variant input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.variant span { display: block; padding: 14px 18px 14px 50px; border: 1.5px solid var(--linii); border-radius: 16px; transition: border-color .15s, background .15s; }
+.variant span::before { content: ""; position: absolute; left: 18px; top: 50%; width: 18px; height: 18px; margin-top: -9px; border: 1.5px solid var(--tihiy); border-radius: 50%; background: #fff; }
+.variant:hover span { border-color: var(--pudra); }
+.variant input:checked + span { border-color: var(--shalfej); background: #eef3ec; }
+.variant input:checked + span::before { border-color: var(--shalfej); box-shadow: inset 0 0 0 4px #fff; background: var(--shalfej); }
+.variant input:focus-visible + span { outline: 2px solid var(--shalfej); outline-offset: 2px; }
+.vopros__oshibka { min-height: 1.6em; margin: 10px 0 0; color: var(--krasnyj); font-weight: 500; }
+.vopros__knopki { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 14px; }
+
+.itog__nad { margin: 0 0 4px; color: var(--tihiy); text-transform: uppercase; letter-spacing: .1em; font-size: 13px; }
+.itog h3 { margin: 0 0 12px; font-size: clamp(30px, 3.6vw, 42px); }
+.itog__chuvstv { padding: 12px 16px; border-radius: 14px; background: var(--pudra-fon); }
+.shema { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.shema__kolonka { padding: 18px 20px; border-radius: 18px; background: var(--fon); }
+.shema h4 { margin: 0 0 8px; font: 600 24px/1 Cormorant, Georgia, serif; }
+.shema h4 span { color: var(--shalfej); }
+.shema ol { margin: 0; padding-left: 20px; }
+.shema li { margin: 4px 0; }
+.itog__pod { color: var(--tihiy); font-size: 15px; }
+
+.poryadok { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.poryadok li { position: relative; padding: 0 16px 0 0; }
+.poryadok li::after { content: ""; position: absolute; left: 52px; right: 16px; top: 23px; height: 1.5px; background: var(--linii); }
+.poryadok li:last-child::after { display: none; }
+.poryadok__nomer { display: grid; place-items: center; width: 46px; height: 46px; margin-bottom: 12px; border-radius: 50%; background: var(--pudra-fon); font: 600 24px/1 Cormorant, Georgia, serif; color: #7d3f30; }
+.poryadok li:last-child .poryadok__nomer { background: var(--shalfej); color: #fff; }
+.poryadok b { display: block; margin-bottom: 4px; font-weight: 600; }
+.poryadok li > span:last-child { color: var(--tihiy); font-size: 15px; }
+
+.sochetaniya { display: grid; grid-template-columns: 360px 1fr; gap: 28px; align-items: start; }
+.komponenty { display: grid; gap: 8px; margin: 0; padding: 22px; border: 1px solid var(--linii); border-radius: 22px; background: var(--karta); }
+.komponenty legend { float: left; width: 100%; margin-bottom: 8px; font: 600 24px/1.1 Cormorant, Georgia, serif; }
+.komponenty label { position: relative; display: block; cursor: pointer; }
+.komponenty input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.komponenty span { display: block; padding: 9px 12px 9px 40px; border-radius: 12px; border: 1.5px solid transparent; transition: background .15s; }
+.komponenty span::before { content: ""; position: absolute; left: 12px; top: 50%; width: 18px; height: 18px; margin-top: -9px; border: 1.5px solid var(--tihiy); border-radius: 5px; background: #fff; }
+.komponenty label:hover span { background: var(--fon); }
+.komponenty input:checked + span { background: #eef3ec; }
+.komponenty input:checked + span::before { background: var(--shalfej) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5 L6.5 11.5 L12.5 4.5' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat; border-color: var(--shalfej); }
+.komponenty input:focus-visible + span { outline: 2px solid var(--shalfej); outline-offset: 1px; }
+.rezultat__pusto { margin: 0; padding: 28px; border: 1.5px dashed var(--linii); border-radius: 22px; color: var(--tihiy); }
+.rezultat__svodka { margin: 0 0 12px; font: 600 28px/1.15 Cormorant, Georgia, serif; }
+.rezultat__svodka--net { color: var(--shalfej); }
+.rezultat__sovet { padding: 12px 16px; border-radius: 14px; background: var(--pudra-fon); margin: 0 0 12px; }
+.rezultat__spisok { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.para { display: flex; gap: 14px; padding: 14px 18px; border-radius: 18px; background: var(--karta); border: 1px solid var(--linii); border-left-width: 5px; }
+.para p { margin: 0; }
+.para__kto { margin-bottom: 2px !important; }
+.para__znak { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-weight: 700; color: #fff; }
+.para--nelzya { border-left-color: var(--krasnyj); } .para--nelzya .para__znak { background: var(--krasnyj); } .para--nelzya b { color: var(--krasnyj); }
+.para--vazhno, .para--ostorozhno { border-left-color: #c98a1b; } .para--vazhno .para__znak, .para--ostorozhno .para__znak { background: #c98a1b; } .para--vazhno b, .para--ostorozhno b { color: var(--zheltyj); }
+.para--mozhno, .para--horosho { border-left-color: var(--shalfej); } .para--mozhno .para__znak, .para--horosho .para__znak { background: var(--shalfej); } .para--mozhno b, .para--horosho b { color: var(--shalfej); }
+
+.preduprezhdenie { margin: 60px 0 0; padding: 18px 22px; border-radius: 18px; background: var(--pudra-fon); font-size: 15px; }
+.podval { margin-top: 50px; padding: 30px 20px; text-align: center; color: var(--tihiy); border-top: 1px solid var(--linii); font-size: 15px; }
+
+@media (max-width: 900px) {
+  .menu { display: none; }
+  .geroj { grid-template-columns: 1fr; padding-top: 30px; }
+  .geroj__kartinka svg { max-width: 260px; }
+  .poryadok { grid-template-columns: 1fr; gap: 14px; }
+  .poryadok li { display: grid; grid-template-columns: 46px 1fr; column-gap: 14px; padding: 0; }
+  .poryadok li::after { left: 22px; right: auto; top: 50px; bottom: -14px; width: 1.5px; height: auto; }
+  .poryadok__nomer { grid-row: span 2; margin: 0; }
+  .sochetaniya { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .test__karta { padding: 22px 18px; border-radius: 22px; }
+  .shema { grid-template-columns: 1fr; }
+  .vopros__knopki .knopka { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

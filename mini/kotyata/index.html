@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мурчалка: котята ищут дом</title>
+<meta name="description" content="Учебный проект: сайт приюта котят с подбором котёнка по характеру и заявкой на знакомство. Приют и котята вымышленные.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🐾</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="propusk" href="#kotyata">Перейти к котятам</a>
+<p class="uchebnyj">Учебный проект Марии Колодницкой: приют и котята вымышленные, заявки никуда не отправляются. <a href="../../proekty/mini-kotyata.html">Разбор проекта</a></p>
+
+<header class="shapka">
+  <a class="logo" href="#"><span aria-hidden="true">🐾</span> Мурчалка</a>
+  <nav class="menu" aria-label="Разделы">
+    <a href="#kotyata">Котята</a><a href="#kak">Как взять</a><a href="#pomoch">Помочь</a><a href="#voprosy">Вопросы</a>
+  </nav>
+  <a class="knopka knopka--mal" href="#kotyata">Выбрать котёнка</a>
+</header>
+
+<main>
+<section class="geroj">
+  <div class="geroj__tekst">
+    <p class="nadpis">Приют для котят в Москве</p>
+    <h1>Найди котёнка, который подойдёт <span>именно тебе</span></h1>
+    <p>Все котята привиты по возрасту, обработаны от паразитов и приучены к лотку. Подберём котёнка по характеру и расскажем всё о нём до встречи.</p>
+    <div class="geroj__knopki">
+      <a class="knopka" href="#kotyata">Посмотреть котят</a>
+      <a class="knopka knopka--svetlaya" href="#pomoch">Помочь приюту</a>
+    </div>
+    <ul class="fakty">
+      <li><b id="vsego-kotyat">9</b> котят ждут дом</li>
+      <li><b>214</b> уже дома</li>
+      <li><b>1 день</b> на ответ по заявке</li>
+    </ul>
+  </div>
+  <div class="geroj__kartinka" id="geroj-koty" aria-hidden="true"></div>
+</section>
+
+<section class="razdel" id="kotyata" aria-labelledby="z-kotyata">
+  <h2 id="z-kotyata">Котята ищут дом</h2>
+  <form class="filtry" id="filtry" aria-label="Подбор котёнка">
+    <fieldset><legend>Возраст</legend>
+      <label><input type="radio" name="vozrast" value="" checked> Любой</label>
+      <label><input type="radio" name="vozrast" value="malysh"> До 3 месяцев</label>
+      <label><input type="radio" name="vozrast" value="podrostok"> 3-6 месяцев</label>
+      <label><input type="radio" name="vozrast" value="vzroslyj"> Старше 6 месяцев</label>
+    </fieldset>
+    <fieldset><legend>Пол</legend>
+      <label><input type="radio" name="pol" value="" checked> Неважно</label>
+      <label><input type="radio" name="pol" value="m"> Мальчик</label>
+      <label><input type="radio" name="pol" value="zh"> Девочка</label>
+    </fieldset>
+    <fieldset><legend>Характер</legend>
+      <label><input type="radio" name="harakter" value="" checked> Любой</label>
+      <label><input type="radio" name="harakter" value="spokojnyj"> Спокойный</label>
+      <label><input type="radio" name="harakter" value="igrivyj"> Игривый</label>
+    </fieldset>
+    <fieldset><legend>Дома есть</legend>
+      <label><input type="checkbox" name="deti"> Дети</label>
+      <label><input type="checkbox" name="sobaki"> Собака</label>
+    </fieldset>
+  </form>
+  <p class="itog" id="itog" aria-live="polite"></p>
+  <ul class="kartochki" id="kartochki"></ul>
+</section>
+
+<section class="razdel" id="kak" aria-labelledby="z-kak">
+  <h2 id="z-kak">Как взять котёнка</h2>
+  <ol class="shagi">
+    <li><b>Заявка</b><span>Нажми "Познакомиться" у котёнка и оставь телефон. Это 2 минуты.</span></li>
+    <li><b>Звонок куратора</b><span>В течение дня куратор расскажет о котёнке и ответит на вопросы.</span></li>
+    <li><b>Знакомство</b><span>Приезжай в приют: посмотришь, как котёнок играет и идёт на руки.</span></li>
+    <li><b>Договор и переезд</b><span>Подписываем договор, отдаём ветпаспорт и корм на первую неделю.</span></li>
+  </ol>
+</section>
+
+<section class="razdel" id="pomoch" aria-labelledby="z-pomoch">
+  <h2 id="z-pomoch">Как помочь, если взять не можешь</h2>
+  <ul class="pomoshch">
+    <li><span aria-hidden="true">🥣</span><b>Корм</b><p>Нужен влажный корм для котят и сухой для взрослых кошек.</p></li>
+    <li><span aria-hidden="true">🧺</span><b>Наполнитель</b><p>Уходит около 40 кг в месяц, подходит любой древесный.</p></li>
+    <li><span aria-hidden="true">🏠</span><b>Передержка</b><p>Возьми котёнка на время, пока он ищет постоянный дом.</p></li>
+    <li><span aria-hidden="true">🙋</span><b>Волонтёрство</b><p>Убирать, играть с котятами, фотографировать их для сайта.</p></li>
+  </ul>
+</section>
+
+<section class="razdel" id="voprosy" aria-labelledby="z-voprosy">
+  <h2 id="z-voprosy">Частые вопросы</h2>
+  <details><summary>Сколько стоит взять котёнка?</summary><p>Котят отдаём бесплатно. Просим только подписать договор: так мы можем узнавать, как котёнку живётся.</p></details>
+  <details><summary>Можно ли взять котёнка в другой город?</summary><p>Пока только в Москву и Московскую область: куратор должен иметь возможность приехать, если что-то пойдёт не так.</p></details>
+  <details><summary>Что делать, если котёнок не прижился?</summary><p>Позвони куратору. Мы поможем советом, а если не получится, заберём котёнка обратно в приют.</p></details>
+  <details><summary>Котята стерилизованы?</summary><p>Котят старше 6 месяцев стерилизуем до переезда. Для малышей договариваемся, что хозяин сделает это в 6-8 месяцев, и помогаем с клиникой.</p></details>
+</section>
+</main>
+
+<footer class="podval">
+  <p>🐾 Мурчалка · учебный проект · <a href="../../">портфолио Марии Колодницкой</a></p>
+</footer>
+
+<dialog class="okno" id="okno" aria-labelledby="okno-imya">
+  <button class="okno__zakryt" type="button" id="zakryt" aria-label="Закрыть">✕</button>
+  <div id="okno-telo"></div>
+</dialog>
+
+<script src="kot.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

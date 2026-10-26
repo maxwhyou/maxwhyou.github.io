@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мультотека: советские мультфильмы по времени и технике</title>
+<meta name="description" content="Учебный проект: каталог советских мультфильмов с подбором по свободному времени, технике и годам и подборкой на вечер.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b23a26'/><circle cx='16' cy='16' r='9' fill='none' stroke='%23f4ecdf' stroke-width='3'/><circle cx='16' cy='16' r='2.5' fill='%23f4ecdf'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="propusk" href="#katalog">Перейти к мультфильмам</a>
+<p class="uchebnyj">Учебный проект Марии Колодницкой: подборка для примера, сами мультфильмы на сайте не показываются. <a href="../../proekty/mini-multfilmy.html">Разбор проекта</a></p>
+
+<header class="shapka">
+  <a class="logo" href="#"><span class="logo__kadr" aria-hidden="true"></span>Мультотека</a>
+  <a class="shapka__podborka" href="#podborka">Подборка <span id="shapka-schet">пустая</span></a>
+</header>
+
+<main>
+<section class="geroj" aria-labelledby="z-geroj">
+  <h1 id="z-geroj">Есть 20 минут до сна? <span>Подберём мультфильм</span></h1>
+  <p>Советские мультфильмы, которые можно включить детям и посмотреть самим. Выбирай по времени, технике и годам, собирай подборку на вечер.</p>
+  <fieldset class="vremya" id="vremya">
+    <legend>Сколько есть времени?</legend>
+    <label><input type="radio" name="vremya" value="0" checked> Неважно</label>
+    <label><input type="radio" name="vremya" value="10"> 10 минут</label>
+    <label><input type="radio" name="vremya" value="20"> 20 минут</label>
+    <label><input type="radio" name="vremya" value="30"> Полчаса</label>
+    <label><input type="radio" name="vremya" value="60"> Час</label>
+  </fieldset>
+</section>
+
+<div class="raskladka">
+<section class="katalog" id="katalog" aria-labelledby="z-katalog">
+  <h2 id="z-katalog">Мультфильмы</h2>
+  <form class="filtry" id="filtry" aria-label="Фильтры" onsubmit="return false">
+    <label class="poisk"><span>Название или режиссёр</span><input type="search" name="poisk" id="poisk" placeholder="Например, Норштейн" autocomplete="off"></label>
+    <fieldset><legend>Техника</legend>
+      <label><input type="checkbox" name="tehnika" value="risovannyj"> Рисованный</label>
+      <label><input type="checkbox" name="tehnika" value="kukolnyj"> Кукольный</label>
+      <label><input type="checkbox" name="tehnika" value="plastilin"> Пластилин</label>
+      <label><input type="checkbox" name="tehnika" value="perekladka"> Перекладка</label>
+    </fieldset>
+    <fieldset><legend>Годы</legend>
+      <label><input type="radio" name="gody" value="" checked> Любые</label>
+      <label><input type="radio" name="gody" value="1950"> 50-е</label>
+      <label><input type="radio" name="gody" value="1960"> 60-е</label>
+      <label><input type="radio" name="gody" value="1970"> 70-е</label>
+      <label><input type="radio" name="gody" value="1980"> 80-е</label>
+    </fieldset>
+    <label class="sort"><span>Порядок</span>
+      <select name="sort" id="sort">
+        <option value="staryj">Сначала старые</option>
+        <option value="novyj">Сначала новые</option>
+        <option value="korotkij">Сначала короткие</option>
+      </select>
+    </label>
+  </form>
+  <p class="itog" id="itog" aria-live="polite"></p>
+  <ul class="kartochki" id="kartochki"></ul>
+</section>
+
+<aside class="podborka" id="podborka" aria-labelledby="z-podborka">
+  <h2 id="z-podborka">Подборка на вечер</h2>
+  <p class="podborka__itog" id="podborka-itog" aria-live="polite"></p>
+  <ol class="podborka__spisok" id="podborka-spisok"></ol>
+  <button class="knopka knopka--tihaya" type="button" id="ochistit" hidden>Очистить подборку</button>
+</aside>
+</div>
+</main>
+
+<a class="plashka" id="plashka" href="#podborka" hidden></a>
+
+<footer class="podval">
+  <p>Мультотека · учебный проект · <a href="../../">портфолио Марии Колодницкой</a></p>
+  <p>Длина мультфильмов округлена до 10 минут.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

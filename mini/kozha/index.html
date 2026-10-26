@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Слой: уход за кожей без лишнего</title>
+<meta name="description" content="Учебный проект: тест на тип кожи, схема ухода утром и вечером и проверка, какие компоненты можно сочетать. Без брендов и рекламы.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%23f7f1ec'/><path d='M16 5 C22 13 25 17 25 21 A9 9 0 0 1 7 21 C7 17 10 13 16 5 Z' fill='%234a6450'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="propusk" href="#test">Перейти к тесту</a>
+<p class="uchebnyj">Учебный проект Марии Колодницкой: советы общие, это не консультация врача. <a href="../../proekty/mini-kozha.html">Разбор проекта</a></p>
+
+<header class="shapka">
+  <a class="logo" href="#">Слой</a>
+  <nav class="menu" aria-label="Разделы"><a href="#test">Тест</a><a href="#poryadok">Порядок</a><a href="#sochetaniya">Сочетания</a></nav>
+</header>
+
+<main>
+<section class="geroj" aria-labelledby="z-geroj">
+  <div class="geroj__tekst">
+    <p class="nadpis">Без брендов и рекламы</p>
+    <h1 id="z-geroj">Уход за кожей <em>без лишнего</em></h1>
+    <p>Узнай свой тип кожи за минуту, получи простую схему на утро и вечер и проверь, какие компоненты нельзя наносить вместе.</p>
+    <div class="geroj__knopki">
+      <a class="knopka" href="#test">Пройти тест</a>
+      <a class="knopka knopka--svetlaya" href="#sochetaniya">Проверить сочетание</a>
+    </div>
+  </div>
+  <div class="geroj__kartinka" aria-hidden="true">
+    <svg viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="140" fill="#efe2d8"/>
+      <rect x="62" y="110" width="58" height="130" rx="18" fill="#e8b4a6"/><rect x="76" y="78" width="30" height="36" rx="6" fill="#4a6450"/>
+      <rect x="132" y="70" width="44" height="170" rx="14" fill="#fff" stroke="#d9c6b8" stroke-width="3"/><rect x="142" y="44" width="24" height="30" rx="4" fill="#c58a78"/><rect x="145" y="30" width="18" height="16" rx="3" fill="#4a6450"/>
+      <rect x="188" y="150" width="62" height="90" rx="22" fill="#a9bfa9"/><rect x="194" y="134" width="50" height="20" rx="8" fill="#e8b4a6"/>
+      <path d="M210 60 C222 76 228 85 228 94 A18 18 0 0 1 192 94 C192 85 198 76 210 60 Z" fill="#a9bfa9" opacity=".8"/>
+    </svg>
+  </div>
+</section>
+
+<section class="razdel test" id="test" aria-labelledby="z-test">
+  <h2 id="z-test" tabindex="-1">Какой у тебя тип кожи?</h2>
+  <p class="razdel__pod">5 вопросов. Отвечай про обычный день, без крема и пудры.</p>
+  <div class="test__karta" id="test-karta"></div>
+</section>
+
+<section class="razdel" id="poryadok" aria-labelledby="z-poryadok">
+  <h2 id="z-poryadok">В каком порядке наносить</h2>
+  <p class="razdel__pod">Правило простое: от жидкого к плотному. Каждый следующий слой ложится на впитавшийся предыдущий.</p>
+  <ol class="poryadok">
+    <li><span class="poryadok__nomer">1</span><b>Очищение</b><span>Гель, пенка или молочко. Утром можно просто водой, если кожа сухая.</span></li>
+    <li><span class="poryadok__nomer">2</span><b>Тонер</b><span>Необязательный шаг. Нужен, если в нём есть то, чего нет в остальном уходе.</span></li>
+    <li><span class="poryadok__nomer">3</span><b>Сыворотка</b><span>Самый концентрированный шаг: увлажнение или актив.</span></li>
+    <li><span class="poryadok__nomer">4</span><b>Крем</b><span>Удерживает воду в коже и закрывает предыдущие слои.</span></li>
+    <li><span class="poryadok__nomer">5</span><b>SPF</b><span>Только утром и последним слоем. Нужен и в пасмурный день.</span></li>
+  </ol>
+</section>
+
+<section class="razdel" id="sochetaniya" aria-labelledby="z-sochetaniya">
+  <h2 id="z-sochetaniya">Что с чем можно сочетать</h2>
+  <p class="razdel__pod">Отметь компоненты из своих средств, они написаны в составе на упаковке. Покажем, что можно наносить вместе, а что лучше развести по времени.</p>
+  <div class="sochetaniya">
+    <fieldset class="komponenty" id="komponenty">
+      <legend>Компоненты в моём уходе</legend>
+    </fieldset>
+    <div class="rezultat" id="sochetaniya-rezultat" aria-live="polite"></div>
+  </div>
+</section>
+
+<p class="preduprezhdenie"><b>Это общие советы, а не лечение.</b> Если на коже высыпания, которые не проходят, сильное покраснение или зуд, обратись к дерматологу. Новое средство сначала проверь на небольшом участке кожи, например за ухом.</p>
+</main>
+
+<footer class="podval">
+  <p>Слой · учебный проект · <a href="../../">портфолио Марии Колодницкой</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

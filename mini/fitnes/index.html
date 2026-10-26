@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ритм: тренировки дома с таймером</title>
+<meta name="description" content="Учебный проект: упражнения для дома с анимированными подсказками, фильтр без прыжков, конструктор тренировки и таймер.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2315171c'/><path d='M4 17 H10 L13 9 L18 24 L21 17 H28' fill='none' stroke='%23c6f432' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="propusk" href="#uprazhneniya">Перейти к упражнениям</a>
+<p class="uchebnyj">Учебный проект Марии Колодницкой: сайт не заменяет тренера и врача. <a href="../../proekty/mini-fitnes.html">Разбор проекта</a></p>
+
+<header class="shapka">
+  <a class="logo" href="#"><svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M2 17 H9 L12.5 8 L18 25 L21.5 17 H30" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>Ритм</a>
+  <nav class="menu" aria-label="Разделы"><a href="#gotovye">Готовые</a><a href="#uprazhneniya">Упражнения</a><a href="#moya">Моя тренировка</a></nav>
+</header>
+
+<main>
+<section class="geroj" aria-labelledby="z-geroj">
+  <div>
+    <h1 id="z-geroj">Тренировка дома, которая <span>помещается в перерыв</span></h1>
+    <p>18 упражнений без инвентаря. Человечек показывает, как двигаться, таймер считает работу и отдых, а фильтр "Тихо" уберёт прыжки, если внизу соседи.</p>
+  </div>
+  <div class="geroj__figurki" id="geroj-figurki" aria-hidden="true"></div>
+</section>
+
+<section class="razdel" id="gotovye" aria-labelledby="z-gotovye">
+  <h2 id="z-gotovye">Готовые тренировки</h2>
+  <ul class="gotovye" id="spisok-gotovyh"></ul>
+  <p class="preduprezhdenie"><b>Важно.</b> Если упражнение отдаёт болью в суставах или спине, остановись. При болезнях сердца и суставов, после травм и во время беременности сначала посоветуйся с врачом.</p>
+</section>
+
+<section class="razdel" id="uprazhneniya" aria-labelledby="z-uprazhneniya">
+  <h2 id="z-uprazhneniya">Упражнения</h2>
+  <form class="filtry" id="filtry" aria-label="Фильтры упражнений" onsubmit="return false">
+    <fieldset><legend>Что тренируем</legend>
+      <label><input type="checkbox" name="zona" value="nogi"> Ноги</label>
+      <label><input type="checkbox" name="zona" value="yagodicy"> Ягодицы</label>
+      <label><input type="checkbox" name="zona" value="press"> Пресс</label>
+      <label><input type="checkbox" name="zona" value="spina"> Спина</label>
+      <label><input type="checkbox" name="zona" value="ruki"> Руки и грудь</label>
+      <label><input type="checkbox" name="zona" value="vse"> Всё тело</label>
+    </fieldset>
+    <fieldset><legend>Сложность</legend>
+      <label><input type="radio" name="uroven" value="" checked> Любая</label>
+      <label><input type="radio" name="uroven" value="1"> Лёгкие</label>
+      <label><input type="radio" name="uroven" value="2"> Средние</label>
+      <label><input type="radio" name="uroven" value="3"> Сложные</label>
+    </fieldset>
+    <label class="tumbler"><input type="checkbox" name="tiho" role="switch"><span class="tumbler__polzunok" aria-hidden="true"></span><span>Тихо для соседей<small>без прыжков</small></span></label>
+  </form>
+  <p class="itog" id="itog" aria-live="polite"></p>
+  <ul class="kartochki" id="kartochki"></ul>
+</section>
+
+<section class="razdel moya" id="moya" aria-labelledby="z-moya">
+  <h2 id="z-moya" tabindex="-1">Моя тренировка</h2>
+  <div class="moya__setka">
+    <div>
+      <p class="moya__pusto" id="moya-pusto">Добавь упражнения кнопкой "В тренировку" или возьми готовую тренировку за основу.</p>
+      <ol class="moya__spisok" id="moya-spisok"></ol>
+    </div>
+    <div class="nastrojki">
+      <label><span>Работа</span><select id="rabota"><option value="20">20 секунд</option><option value="30" selected>30 секунд</option><option value="40">40 секунд</option><option value="45">45 секунд</option></select></label>
+      <label><span>Отдых</span><select id="otdyh"><option value="10">10 секунд</option><option value="15" selected>15 секунд</option><option value="20">20 секунд</option><option value="30">30 секунд</option></select></label>
+      <label><span>Круги</span><select id="krugi"><option value="1" selected>1 круг</option><option value="2">2 круга</option><option value="3">3 круга</option></select></label>
+      <p class="nastrojki__itog" id="moya-itog" aria-live="polite"></p>
+      <button class="knopka knopka--glav" type="button" id="nachat" disabled>Начать тренировку</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="plashka" id="plashka" href="#moya" hidden></a>
+
+<footer class="podval">
+  <p>Ритм · учебный проект · <a href="../../">портфолио Марии Колодницкой</a></p>
+</footer>
+
+<dialog class="tajmer" id="tajmer" aria-labelledby="t-nazv">
+  <div class="tajmer__progress" aria-hidden="true"><span id="t-progress"></span></div>
+  <div class="tajmer__verh">
+    <p class="tajmer__gde" id="t-gde"></p>
+    <button class="tajmer__zvuk" type="button" id="t-zvuk" aria-pressed="true">Звук</button>
+  </div>
+  <div class="tajmer__centr" id="t-centr">
+    <p class="tajmer__faza" id="t-faza"></p>
+    <p class="tajmer__cifry" id="t-cifry"></p>
+    <div class="tajmer__figurka" id="t-figurka"></div>
+    <h2 class="tajmer__nazv" id="t-nazv"></h2>
+    <p class="tajmer__kak" id="t-kak"></p>
+    <p class="tajmer__dalshe" id="t-dalshe"></p>
+  </div>
+  <p class="skryt" id="t-diktor" aria-live="assertive"></p>
+  <div class="tajmer__knopki" id="t-knopki">
+    <button class="knopka knopka--glav" type="button" id="t-pauza">Пауза</button>
+    <button class="knopka" type="button" id="t-propusk">Пропустить</button>
+    <button class="knopka" type="button" id="t-stop">Закончить</button>
+  </div>
+</dialog>
+
+<script src="figurka.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

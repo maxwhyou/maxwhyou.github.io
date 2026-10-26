@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мурчалка: сайт приюта котят, учебный UX-проект Марии Колодницкой</title>
+<link rel="canonical" href="https://maxwhyou.github.io/proekty/mini-kotyata.html">
+<meta property="og:url" content="https://maxwhyou.github.io/proekty/mini-kotyata.html">
+<meta name="description" content="Учебный проект: сайт приюта, где котёнка подбирают под свою жизнь. Прототип в Figma, заявка с понятными ошибками, 15 проверок и доступность с клавиатуры.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Мурчалка: сайт приюта котят, учебный UX-проект Марии Колодницкой">
+<meta property="og:description" content="Учебный проект: сайт приюта, где котёнка подбирают под свою жизнь. Прототип в Figma, заявка с понятными ошибками, 15 проверок и доступность с клавиатуры.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=056fab02">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js?v=423aa71b" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#mini">Мини-сайты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#mini">Мини-сайты</a> / Мурчалка: приют котят</nav>
+<p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+<h1>Приют котят <em>(Мурчалка)</em></h1>
+
+<p class="meta">Учебный проект, октябрь 2026. Прототип в Figma, вёрстка на HTML, CSS и JavaScript без библиотек. Приют и котята вымышленные, заявки никуда не отправляются.</p>
+<div class="ssylki-proekta"><a class="knopka knopka--glav" href="../mini/kotyata/">Открыть сайт</a><a class="knopka" href="https://www.figma.com/proto/Pylc9ooRvabTaV0o0JR9YY/?node-id=3-7&starting-point-node-id=3%3A7">Прототип в Figma</a></div>
+<div class="dve">
+  <div class="blok steklo"><h3>Задача</h3><p>Сайт приюта, на котором человек подбирает котёнка под свою жизнь и оставляет заявку на знакомство. Куратору нужна заявка, по которой можно сразу звонить: имя, телефон и город.</p></div>
+  <div class="blok steklo"><h3>Для кого</h3><p>Семья или человек, который берёт котёнка впервые, чаще всего с телефона. Им важен не окрас, а то, уживётся ли котёнок с ребёнком или собакой и что будет после заявки.</p></div>
+</div>
+<figure class="snimok"><a href="../img/mini/kot-pk.webp" aria-label="Открыть скриншот целиком: Первый экран: что это за приют, кнопка к котятам и три факта, которые снимают главные сомнения"><img src="../img/mini/kot-pk.webp" width="1440" height="900" alt="Первый экран: что это за приют, кнопка к котятам и три факта, которые снимают главные сомнения" loading="lazy" decoding="async"></a><figcaption>Первый экран: что это за приют, кнопка к котятам и три факта, которые снимают главные сомнения</figcaption></figure>
+<h2>Прототип</h2>
+<p>Сначала собрала в Figma главную для компьютера и телефона и четыре состояния окна. Кнопки и метки сделаны компонентами, экраны связаны в кликабельный сценарий: карточка Персика, "Познакомиться", "Хочу взять Персика", пустая форма с ошибками и экран "Заявка принята".</p>
+<figure class="snimok"><a href="../img/mini/figma-sostoyaniya.webp" aria-label="Открыть скриншот целиком: Состояния окна в Figma: котёнок, пустая заявка, заявка с ошибками и готово"><img src="../img/mini/figma-sostoyaniya.webp" width="1595" height="1020" alt="Состояния окна в Figma: котёнок, пустая заявка, заявка с ошибками и готово" loading="lazy" decoding="async"></a><figcaption>Состояния окна в Figma: котёнок, пустая заявка, заявка с ошибками и готово</figcaption></figure>
+<h2>Решения и почему</h2>
+<div class="dve">
+  <div class="karta steklo"><h3>Подбор</h3><ul>
+    <li>Фильтры по жизни хозяина: возраст, характер, есть ли дома дети или собака. Окраса в фильтрах нет: по нему не выбирают, с кем жить 15 лет</li>
+    <li>Счётчик "Подходят 2 котёнка из 9" меняется сразу и озвучивается скринридером</li>
+    <li>Пустой результат не тупик: подсказка, какой фильтр обычно не так важен, и кнопка "Сбросить фильтры"</li>
+    <li>В окне котёнка история и здоровье до заявки, чтобы решение принималось на сайте, а не в звонке</li></ul></div>
+  <div class="karta steklo"><h3>Заявка</h3><ul>
+    <li>Три обязательных поля. Вопрос "почему" необязательный, с лимитом 500 знаков и счётчиком</li>
+    <li>Ошибка рядом с полем и по-человечески: не "неверный формат", а пример правильного номера</li>
+    <li>Фокус переходит на первое поле с ошибкой, ошибка связана с полем для скринридера</li>
+    <li>Телефон принимается в любой записи: +7, 8, скобки, пробелы. Проверяются только цифры</li>
+    <li>Ограничение "только Москва и область" видно сразу в форме, а не после звонка куратора</li>
+    <li>Имена в падежах: "Хочу взять Персика", "Заявка на знакомство с Персиком"</li></ul></div>
+</div>
+<div class="snimki"><figure class="snimok"><a href="../img/mini/kot-okno.webp" aria-label="Открыть скриншот целиком: Окно котёнка: история, здоровье и одна главная кнопка"><img src="../img/mini/kot-okno.webp" width="1440" height="900" alt="Окно котёнка: история, здоровье и одна главная кнопка" loading="lazy" decoding="async"></a><figcaption>Окно котёнка: история, здоровье и одна главная кнопка</figcaption></figure><figure class="snimok"><a href="../img/mini/kot-oshibki.webp" aria-label="Открыть скриншот целиком: Пустая заявка: у каждого поля своя ошибка, фокус на первом поле"><img src="../img/mini/kot-oshibki.webp" width="1440" height="900" alt="Пустая заявка: у каждого поля своя ошибка, фокус на первом поле" loading="lazy" decoding="async"></a><figcaption>Пустая заявка: у каждого поля своя ошибка, фокус на первом поле</figcaption></figure></div>
+<h2>Как проверяла</h2>
+<p>Прогнала форму и фильтры автотестом в Microsoft Edge: заполняла поля, нажимала кнопки и клавиши и сверяла тексты ошибок и фокус. Поле "почему" заполняла вводом с клавиатуры, а не подстановкой значения: только так проверяется лимит в 500 знаков.</p>
+<div class="tablica steklo"><table><tr><th>№</th><th>Что проверяю</th><th>Действие</th><th>Ожидаю</th><th>Получила</th><th>Итог</th></tr><tr><td>1</td><td>Пустая форма</td><td>Нажать "Отправить заявку"</td><td>Ошибки у имени, телефона, города и согласия, фокус на имени</td><td>4 ошибки, фокус на имени</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>2</td><td>Имя короче 2 букв</td><td>Имя "М"</td><td>"Напиши имя, хотя бы 2 буквы"</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>3</td><td>Цифры в имени</td><td>Имя "Маша1"</td><td>"В имени не должно быть цифр"</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>4</td><td>Имя из пробелов</td><td>Три пробела</td><td>Пробелы не считаются буквами</td><td>"Напиши имя, хотя бы 2 буквы"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>5</td><td>Телефон со скобками</td><td>+7 (900) 123-45-67</td><td>Принят</td><td>принят</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>6</td><td>Телефон через 8 слитно</td><td>89001234567</td><td>Принят</td><td>принят</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>7</td><td>Короткий телефон</td><td>8 912 34</td><td>Ошибка с примером номера</td><td>"Нужен мобильный номер из 11 цифр, например +7 900 123-45-67"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>8</td><td>Городской номер</td><td>+7 495 123-45-67</td><td>Ошибка: нужен мобильный</td><td>та же ошибка</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>9</td><td>Номер другой страны</td><td>+1 900 123 45 67</td><td>Ошибка</td><td>та же ошибка</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>10</td><td>Другой город</td><td>Выбрать "Другой город"</td><td>Сразу объяснить ограничение</td><td>"Пока отдаём котят только в Москву и область"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>11</td><td>Без согласия</td><td>Не отмечать галочку</td><td>Ошибка у согласия, фокус на нём</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>12</td><td>Лимит текста</td><td>Набрать 600 знаков в поле "почему"</td><td>Вводится 500, счётчик "500 из 500"</td><td>500 знаков, "500 из 500 знаков"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>13</td><td>Всё верно</td><td>Мария, +7 900 123-45-67, Москва, согласие</td><td>Экран "Заявка принята"</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>14</td><td>Фильтр без результатов</td><td>До 3 месяцев и спокойный</td><td>Подсказка и кнопка сброса</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>15</td><td>Возврат фокуса</td><td>Открыть окно с клавиатуры и нажать Esc</td><td>Фокус возвращается на кнопку "Познакомиться"</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr></table></div>
+<h2>Что нашла и исправила</h2>
+<div class="blok steklo"><ul>
+  <li><b>Контраст.</b> axe нашёл ссылку с контрастом 4,3:1 при норме 4,5:1. Затемнила акцентный цвет с #C2552A до #A8441C. В прототипе остался старый цвет: так видно, что проверка нашла то, чего не было видно в макете.</li>
+  <li><b>Красная рамка пропадала в фокусе.</b> Стиль фокуса перебивал стиль ошибки, и у поля, на которое переводится фокус, рамка становилась персиковой. Заметила, пока рисовала состояние с ошибками в Figma.</li>
+  <li><b>"Подходят 1 котёнок".</b> Глагол не согласовывался с числом, теперь "Подходит 1 котёнок".</li>
+  <li><b>Выбранный фильтр.</b> Текст на персиковом фоне был 3,9:1, сделала темнее до 4,5:1.</li>
+</ul><p>После исправлений axe не находит нарушений WCAG 2.1 A и AA ни на странице, ни в окне заявки. На телефоне страница не уезжает вбок.</p></div>
+<div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/mini/kot-tel.webp" aria-label="Открыть скриншот целиком: Телефон: заголовок, кнопки и факты помещаются без прокрутки вбок"><img src="../img/mini/kot-tel.webp" width="600" height="1299" alt="Телефон: заголовок, кнопки и факты помещаются без прокрутки вбок" loading="lazy" decoding="async"></a><figcaption>Телефон: заголовок, кнопки и факты помещаются без прокрутки вбок</figcaption></figure></div>
+<h2>Что проверила бы на людях</h2>
+<div class="blok steklo"><ul>
+  <li>Понятно ли, что "Познакомиться" открывает подробности, а не сразу отправляет заявку</li>
+  <li>Хватает ли истории и здоровья в окне, чтобы решиться, или люди всё равно хотят позвонить</li>
+  <li>Не останавливает ли галочка согласия на последнем шаге</li>
+</ul></div>
+<nav class="dalshe" aria-label="Другие мини-сайты"><a class="knopka" href="../#mini">Все мини-сайты</a><a class="knopka" href="mini-multfilmy.html">Дальше: Мультотека</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>

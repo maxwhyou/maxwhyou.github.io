@@ -148,17 +148,28 @@ p { margin: 0 0 10px; }
 .glavy-spisok { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0; padding: 0; list-style: none; }
 .glavy-spisok a { color: inherit; text-decoration: none; transition: color .3s; }
 .glavy-spisok a:hover { color: var(--tekst); }
-/* фото: карточка чуть повёрнута и наклоняется за курсором */
+/* фото: два снимка в арке с переливающейся каймой. По фото от курсора идут круги,
+   по клику один снимок жидко перетекает в другой (WebGL в js/main.js). Без WebGL снимки просто сменяются */
 .foto {
-  position: absolute; right: calc(var(--pole) + 2vw); top: 6vh; width: min(25vw, 340px); margin: 0;
-  transform: rotate(3deg); transition: transform .3s ease-out; z-index: 0;
+  position: absolute; right: calc(var(--pole) + 2vw); top: 4vh; width: min(25vw, 350px); margin: 0;
+  transition: transform .3s ease-out; z-index: 0;
 }
-.foto img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); }
-.foto::after {                       /* бензиновый блик поверх фото */
-  content: ""; position: absolute; inset: 0; border-radius: 8px; pointer-events: none; mix-blend-mode: screen;
-  background: linear-gradient(130deg, transparent 40%, rgba(242, 169, 196, .16), rgba(168, 226, 214, .10), transparent 70%);
+.foto__ramka {
+  position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; padding: 0; border: 0; cursor: pointer;
+  border-radius: 999px 999px 18px 18px; overflow: hidden; background: #1a171c;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, .55);
 }
-.foto figcaption { position: absolute; left: 12px; bottom: 10px; }
+.foto__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .9s ease; }
+.foto__img--vtoroe { opacity: 0; }
+.foto--vtoroe .foto__img--vtoroe { opacity: 1; }
+.foto__voda { position: absolute; inset: 0; width: 100%; height: 100%; }
+.foto__ramka::after {                /* кайма с бензиновым переливом */
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none;
+  background: var(--perelivy); background-size: 300% 100%; animation: perelivy 9s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.foto figcaption { display: flex; justify-content: space-between; margin-top: 14px; }
 
 /* ---------- 8. Главы главной ---------- */
 .glava { max-width: var(--shirina); margin: 0 auto; padding: 120px var(--pole) 40px; box-sizing: content-box; }
@@ -195,11 +206,29 @@ p { margin: 0 0 10px; }
 .keysy .kartochka { grid-column: span 2; }
 .keysy .kartochka--shirokaya { grid-column: span 3; }
 
-.instrumenty { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.instrumenty { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .instrumenty .kartochka__kartinka { aspect-ratio: 16 / 9; }
+.mini-sajty { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.ssylki-proekta { display: flex; flex-wrap: wrap; gap: 12px; margin: -10px 0 30px; }
 .metka-proekta { display: inline-block; padding: 5px 11px; border-radius: 20px; border: 1px solid var(--linii-yarche); }
 
-/* обо мне: цифры SEO, опыт, навыки */
+/* обо мне: 3D-модель, цифры SEO, опыт, навыки */
+.obo-mne__verh { display: grid; grid-template-columns: minmax(280px, .85fr) 1.15fr; gap: 20px; margin-bottom: 20px; }
+.model {
+  position: relative; min-height: 560px; border-radius: var(--radius); overflow: hidden; cursor: grab;
+  border: 1px solid var(--linii);
+  background: radial-gradient(55% 50% at 50% 48%, rgba(205, 182, 242, .18), transparent 70%), var(--karta);
+}
+.model:active { cursor: grabbing; }
+.model__scena { position: absolute; inset: 0; width: 100%; height: 100%; }
+.model__podpis, .model__pod { position: absolute; left: 18px; z-index: 1; margin: 0; pointer-events: none; }
+.model__podpis { top: 16px; }
+.model__pod { bottom: 14px; }
+.model__zaglushka { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; }
+.model--gotovo .model__zaglushka { display: none; }
+.model--oshibka .model__zaglushka { font-size: 0; }
+.model--oshibka .model__zaglushka::after { content: "3D-модель не загрузилась"; font: var(--mono); }
+.obo-mne__verh .cifry { grid-template-columns: 1fr 1fr; margin: 0; }
 .cifry { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px; }
 .cifra { position: relative; padding: 22px; border-radius: var(--radius); background: var(--karta); border: 1px solid var(--linii); transition: border-color .4s, transform .4s; }
 .cifra:hover { border-color: var(--linii-yarche); transform: translateY(-4px); }
@@ -221,9 +250,10 @@ p { margin: 0 0 10px; }
 .tegi { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .tegi li { font-size: 13px; padding: 4px 11px; border-radius: 20px; border: 1px solid var(--linii); color: #ddd5cc; }
 
-/* контакты */
-.kontakty { text-align: left; }
-.kontakty h2 { font-size: clamp(54px, 9vw, 150px); margin: 14px 0 26px; }
+/* контакты: текст слева, второе фото в такой же арке справа */
+.kontakty { display: grid; grid-template-columns: 1fr minmax(240px, 340px); gap: 60px; align-items: center; }
+.kontakty h2 { font-size: clamp(54px, 8vw, 130px); margin: 14px 0 26px; }
+.foto--kontakty { position: relative; right: auto; top: auto; width: 100%; }
 .kontakty p { max-width: 620px; color: var(--tekst-tihiy); font-size: 19px; margin-bottom: 34px; }
 .kontakty__spisok { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -314,6 +344,7 @@ code { font: 13px "JetBrains Mono", Consolas, monospace; background: rgba(243, 2
   .cifry { grid-template-columns: repeat(2, 1fr); }
   .navyki { grid-template-columns: repeat(2, 1fr); }
   .foto { width: min(28vw, 300px); top: 3vh; }
+  .foto--kontakty { width: 100%; }
 }
 
 /* ---------- 12. Телефон ---------- */
@@ -337,15 +368,18 @@ code { font: 13px "JetBrains Mono", Consolas, monospace; background: rgba(243, 2
   .pervyj h1 { font-size: clamp(40px, 12vw, 56px); margin: 16px 0 20px; }
   .pervyj__tekst { font-size: 17px; }
   .pervyj__knopki .knopka { flex: 1 1 100%; }
-  .foto { position: relative; right: auto; top: auto; width: 72%; max-width: 300px; margin: 34px auto 10px; }
+  .foto { position: relative; right: auto; top: auto; width: 76%; max-width: 320px; margin: 40px auto 10px; }
   .pervyj__niz { flex-direction: column; align-items: start; margin-top: 20px; }
 
   .glava { padding-top: 80px; }
   .glava__shapka { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
-  .keysy, .instrumenty, .cifry, .dva-stolbca, .navyki { grid-template-columns: 1fr; }
+  .keysy, .instrumenty, .mini-sajty, .cifry, .dva-stolbca, .navyki, .obo-mne__verh, .obo-mne__verh .cifry { grid-template-columns: 1fr; }
+  .model { min-height: 440px; }
   .keysy .kartochka, .keysy .kartochka--shirokaya { grid-column: auto; }
   .kartochka h3 { font-size: 24px; }
   .kontakty__spisok .knopka { flex: 1 1 100%; }
+  .kontakty { grid-template-columns: 1fr; gap: 10px; }
+  .foto--kontakty { width: 76%; max-width: 320px; margin: 30px auto 0; }
 
   .stranica { padding-top: 30px; }
   .itogi { grid-template-columns: 1fr 1fr; }

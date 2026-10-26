@@ -1,0 +1,111 @@
+/* Мультотека: бумага, типографская краска и цветные кадры, как на старых коробках с плёнкой */
+@font-face { font-family: Unbounded; font-weight: 400 800; font-display: swap; src: url(fonts/unbounded-cyrillic.woff2) format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: Unbounded; font-weight: 400 800; font-display: swap; src: url(fonts/unbounded-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: Onest; font-weight: 200 700; font-display: swap; src: url(fonts/onest-cyrillic.woff2) format("woff2"); unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: Onest; font-weight: 200 700; font-display: swap; src: url(fonts/onest-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+
+:root {
+  --fon: #f4ecdf; --bumaga: #fbf6ee; --tekst: #1f1d36; --tihiy: #5c5873; --linii: #ddd1bf;
+  --akcent: #b23a26; --akcent-hover: #962f1e; --zhelt: #f2b134;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }   /* иначе display у кнопок перебивает атрибут hidden */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; background: var(--fon); color: var(--tekst); font: 400 17px/1.6 Onest, "Segoe UI", sans-serif; }
+a { color: var(--akcent); }
+h1, h2, h3 { font-family: Unbounded, Onest, sans-serif; line-height: 1.15; }
+:focus-visible { outline: 3px solid var(--tekst); outline-offset: 3px; }
+.skryt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.propusk { position: absolute; left: 12px; top: -60px; padding: 8px 14px; background: var(--tekst); color: #fff; z-index: 50; }
+.propusk:focus { top: 10px; }
+.uchebnyj { margin: 0; padding: 8px 20px; background: var(--tekst); color: var(--fon); font-size: 14px; text-align: center; }
+.uchebnyj a { color: var(--zhelt); }
+
+.knopka { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border: 2px solid var(--tekst); border-radius: 999px; background: var(--tekst); color: var(--bumaga); font: 600 15px/1.2 Onest, sans-serif; cursor: pointer; text-decoration: none; transition: background .15s, color .15s, transform .15s; }
+.knopka:hover { transform: translateY(-1px); }
+.knopka--tihaya { background: transparent; color: var(--tekst); }
+.knopka[aria-pressed="false"] { background: transparent; color: var(--tekst); }
+.knopka[aria-pressed="false"]:hover { background: var(--bumaga); }
+.knopka[aria-pressed="true"] { background: var(--akcent); border-color: var(--akcent); color: #fff; }
+
+.shapka { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px max(20px, calc(50% - 600px)); background: rgba(244, 236, 223, .94); backdrop-filter: blur(6px); border-bottom: 2px solid var(--tekst); }
+.logo { display: flex; align-items: center; gap: 10px; font: 800 20px/1 Unbounded, sans-serif; color: var(--tekst); text-decoration: none; }
+.logo__kadr { width: 28px; height: 28px; border-radius: 50%; border: 4px solid var(--akcent); box-shadow: inset 0 0 0 4px var(--fon), inset 0 0 0 9px var(--akcent); }
+.shapka__podborka { white-space: nowrap; font-weight: 600; color: var(--tekst); text-decoration: none; padding: 8px 14px; border: 2px solid var(--tekst); border-radius: 999px; }
+.shapka__podborka span { color: var(--akcent); }
+
+main { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+.geroj { padding: 56px 0 36px; }
+.geroj h1 { margin: 0 0 16px; font-size: clamp(30px, 5vw, 60px); font-weight: 800; letter-spacing: -.02em; max-width: 15em; }
+.geroj h1 span { display: block; color: var(--akcent); }
+.geroj > p { max-width: 640px; font-size: 19px; color: var(--tihiy); margin: 0 0 26px; }
+
+/* выбор времени: большие кнопки, как переключатель на старом телевизоре */
+.vremya { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; border: 0; }
+.vremya legend { width: 100%; margin-bottom: 10px; font-weight: 700; }
+.vremya label, .filtry fieldset label { position: relative; cursor: pointer; }
+.vremya input, .filtry fieldset input { position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0; }
+.vremya label { padding: 12px 22px; border: 2px solid var(--tekst); border-radius: 14px; background: var(--bumaga); font: 700 17px/1 Unbounded, sans-serif; transition: background .15s, color .15s; }
+.vremya label:has(input:checked) { background: var(--tekst); color: var(--bumaga); }
+.vremya label:has(input:focus-visible), .filtry fieldset label:has(input:focus-visible) { outline: 3px solid var(--akcent); outline-offset: 3px; }
+
+.raskladka { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; padding-bottom: 40px; }
+.katalog h2, .podborka h2 { margin: 0 0 16px; font-size: 26px; font-weight: 700; }
+.filtry { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: flex-end; padding: 18px 20px; background: var(--bumaga); border: 2px solid var(--tekst); border-radius: 18px; }
+.filtry fieldset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; }
+.filtry legend, .poisk span, .sort span { display: block; margin-bottom: 6px; font-weight: 700; font-size: 15px; }
+.filtry fieldset label { padding: 6px 13px; border: 2px solid var(--linii); border-radius: 999px; font-size: 15px; font-weight: 600; background: var(--fon); }
+.filtry fieldset label:has(input:checked) { border-color: var(--tekst); background: var(--zhelt); }
+.poisk { flex: 1 1 260px; }
+.poisk input, .sort select { width: 100%; padding: 10px 14px; border: 2px solid var(--tekst); border-radius: 12px; font: inherit; background: #fff; color: var(--tekst); }
+.sort { flex: 0 1 220px; }
+.itog { margin: 16px 0; color: var(--tihiy); font-weight: 600; }
+.itog button { margin-left: 8px; padding: 0; border: 0; background: none; color: var(--akcent); font: inherit; text-decoration: underline; cursor: pointer; }
+
+.kartochki { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.mult { display: flex; flex-direction: column; background: var(--bumaga); border: 2px solid var(--tekst); border-radius: 18px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.mult:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--tekst); }
+.kadr { position: relative; aspect-ratio: 16 / 9; display: flex; align-items: flex-end; justify-content: space-between; padding: 12px 14px; color: var(--fon); border-bottom: 2px solid var(--tekst); overflow: hidden; }
+.kadr::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(0, 0, 0, .12) 18px 20px); opacity: .5; }
+.kadr__god { position: relative; font: 800 34px/1 Unbounded, sans-serif; letter-spacing: -.02em; }
+.kadr svg { position: relative; width: 64px; height: 64px; }
+.mult__telo { display: flex; flex-direction: column; flex: 1; padding: 14px 16px 16px; }
+.mult h3 { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
+.mult__kto { margin: 0 0 8px; color: var(--tihiy); font-size: 15px; }
+.mult__pro { margin: 0 0 12px; font-size: 15px; line-height: 1.5; }
+.mult__metki { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 14px; padding: 0; list-style: none; }
+.mult__metki li { padding: 2px 10px; border-radius: 999px; background: var(--fon); border: 1px solid var(--linii); font-size: 14px; font-weight: 600; }
+.pusto { grid-column: 1 / -1; padding: 30px; text-align: center; border: 2px dashed var(--tekst); border-radius: 18px; }
+.pusto .knopka { margin: 10px 4px 0; }
+
+.podborka { position: sticky; top: 84px; padding: 20px; background: var(--tekst); color: var(--fon); border-radius: 18px; }
+.podborka h2 { font-size: 20px; }
+.podborka__itog { margin: 0 0 12px; color: #d8d2e8; }
+.podborka__itog b { color: var(--zhelt); }
+.podborka__spisok { margin: 0 0 14px; padding: 0; list-style: none; counter-reset: n; }
+.podborka__spisok li { counter-increment: n; display: grid; grid-template-columns: 26px 1fr auto; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px solid rgba(244, 236, 223, .2); }
+.podborka__spisok li::before { content: counter(n); font: 700 14px/1 Unbounded, sans-serif; color: var(--zhelt); }
+.podborka__spisok small { display: block; color: #c9c3da; }
+.podborka__ubrat { width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgba(244, 236, 223, .12); color: var(--fon); font-size: 16px; cursor: pointer; }
+.podborka__ubrat:hover { background: rgba(244, 236, 223, .25); }
+.podborka .knopka--tihaya { border-color: var(--fon); color: var(--fon); width: 100%; }
+.podborka :focus-visible { outline-color: var(--zhelt); }
+
+.plashka { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 30; display: none; padding: 12px 20px; border-radius: 999px; background: var(--akcent); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 8px 24px rgba(31, 29, 54, .3); white-space: nowrap; }
+.podval { padding: 30px 20px; text-align: center; color: var(--tihiy); border-top: 2px solid var(--tekst); font-size: 15px; }
+.podval p { margin: 4px 0; }
+
+@media (max-width: 960px) {
+  .raskladka { grid-template-columns: 1fr; }
+  .podborka { position: static; }
+  .plashka:not([hidden]) { display: block; }
+  .podval { padding-bottom: 80px; }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .geroj { padding-top: 32px; }
+  .vremya label { padding: 10px 14px; font-size: 15px; }
+  .shapka__podborka { display: none; }   /* на телефоне подборку показывает плашка внизу */
+  .kartochki { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

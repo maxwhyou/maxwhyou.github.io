@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Баг-репортёр: расширение для тестировщика, проект Марии Колодницкой</title>
+<link rel="canonical" href="https://maxwhyou.github.io/proekty/bag-reporter.html">
+<meta property="og:url" content="https://maxwhyou.github.io/proekty/bag-reporter.html">
+<meta name="description" content="Расширение для Opera и Chrome: снимок экрана с пометками, окружение, ошибки консоли и сети и готовый баг-репорт для Jira в один клик.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Баг-репортёр: расширение для тестировщика, проект Марии Колодницкой">
+<meta property="og:description" content="Расширение для Opera и Chrome: снимок экрана с пометками, окружение, ошибки консоли и сети и готовый баг-репорт для Jira в один клик.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=056fab02">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js?v=423aa71b" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#mini">Мини-сайты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#instrumenty">Инструменты</a> / Баг-репортёр</nav>
+<p class="mono"><span class="metka-proekta">рабочий инструмент · вайб-кодинг</span></p>
+<h1>Баг-репортёр <em>(в один клик)</em></h1>
+
+<p class="meta">Расширение для Opera и Chrome на JavaScript. Сделала с Claude Code в октябре 2026.</p>
+<div class="blok steklo">
+  <h3>Зачем</h3>
+  <p>Хороший баг-репорт собирается из одних и тех же частей: снимок с отметкой, где ошибка, шаги, ожидаемый и фактический результат, окружение и логи. Руками это пять минут на каждую ошибку, и что-нибудь обязательно забудешь: версию браузера, размер окна или ошибку в консоли, которая объясняет всё. Баг-репортёр собирает это сам по одному нажатию.</p>
+</div>
+<figure class="snimok"><a href="../img/proekty/bag-reporter.webp" aria-label="Открыть скриншот целиком: Редактор баг-репорта: телефон и почта размыты, кнопка обведена, журнал страницы собран сам"><img src="../img/proekty/bag-reporter.webp" width="1400" height="900" alt="Редактор баг-репорта: телефон и почта размыты, кнопка обведена, журнал страницы собран сам" loading="lazy" decoding="async"></a><figcaption>Редактор баг-репорта: телефон и почта размыты, кнопка обведена, журнал страницы собран сам</figcaption></figure>
+<h2>Что делает</h2>
+<div class="dve">
+  <div class="karta steklo"><h3>Собирает сам</h3><ul>
+    <li>Снимок видимой части страницы</li>
+    <li>Адрес, браузер и его версию, систему, размер экрана и окна, масштаб, время</li>
+    <li>Ошибки и предупреждения консоли, ошибки скриптов</li>
+    <li>Картинки, стили и скрипты, которые не загрузились</li>
+    <li>Запросы, которые ответили ошибкой 4xx и 5xx или не дошли</li></ul></div>
+  <div class="karta steklo"><h3>Помогает оформить</h3><ul>
+    <li>Рамка, стрелка и подпись на снимке, отмена по Ctrl+Z</li>
+    <li>Размытие личных данных: телефона, почты, ФИО</li>
+    <li>Шаги, ожидаемый и фактический результат, серьёзность и приоритет</li>
+    <li>Не даст скопировать репорт без заголовка и фактического результата</li>
+    <li>Текст в разметке Jira или в Markdown для YouTrack, GitHub и Trello</li></ul></div>
+</div>
+<h2>Как проверяла</h2>
+<div class="blok steklo">
+  <p>Сделала тестовую страницу оформления заказа с четырьмя ошибками разного типа: ошибка в консоли, запрос с ответом 404, картинка, которой нет, и исключение в скрипте через 50 мс после загрузки. Баг-репортёр поймал все четыре, включая исключение, которое случилось уже после загрузки страницы. Текст для Jira проверила по разметке: шаги идут нумерованным списком, окружение маркированным, логи блоком кода.</p>
+  <p>На первом снимке редактора нашла свою же ошибку вёрстки: галочки в журнале растянулись на всю ширину. Поправила до публикации.</p>
+</div>
+<nav class="dalshe" aria-label="Другие инструменты"><a class="knopka" href="../#instrumenty">Все инструменты</a><a class="knopka" href="krauler.html">Дальше: Краулер для SEO-аудита</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>

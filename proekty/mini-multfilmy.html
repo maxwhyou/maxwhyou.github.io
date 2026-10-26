@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мультотека: каталог мультфильмов с подборкой на вечер, учебный UX-проект Марии Колодницкой</title>
+<link rel="canonical" href="https://maxwhyou.github.io/proekty/mini-multfilmy.html">
+<meta property="og:url" content="https://maxwhyou.github.io/proekty/mini-multfilmy.html">
+<meta name="description" content="Учебный проект: каталог советских мультфильмов с подбором по свободному времени, подборкой на вечер и подсказками для пустого поиска.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Мультотека: каталог мультфильмов с подборкой на вечер, учебный UX-проект Марии Колодницкой">
+<meta property="og:description" content="Учебный проект: каталог советских мультфильмов с подбором по свободному времени, подборкой на вечер и подсказками для пустого поиска.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=056fab02">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js?v=423aa71b" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#mini">Мини-сайты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#mini">Мини-сайты</a> / Мультотека</nav>
+<p class="mono"><span class="metka-proekta">мини-сайт · учебный проект</span></p>
+<h1>Мультотека <em>(по времени)</em></h1>
+
+<p class="meta">Учебный проект, октябрь 2026. HTML, CSS и JavaScript без библиотек. Подборка хранится в браузере, сами мультфильмы на сайте не показываются.</p>
+<div class="ssylki-proekta"><a class="knopka knopka--glav" href="../mini/multfilmy/">Открыть сайт</a></div>
+<div class="dve">
+  <div class="blok steklo"><h3>Задача</h3><p>Каталог, который отвечает на вопрос родителя вечером: что включить ребёнку, если до сна 20 минут. И заодно что посмотреть самому.</p></div>
+  <div class="blok steklo"><h3>Для кого</h3><p>Родители, бабушки и дедушки, которые помнят эти мультфильмы, но не помнят, сколько они идут и кто их снял. Выбирают быстро и часто с телефона.</p></div>
+</div>
+<figure class="snimok"><a href="../img/mini/mult-pk.webp" aria-label="Открыть скриншот целиком: Первый экран: главный вопрос про время и переключатель минут"><img src="../img/mini/mult-pk.webp" width="1440" height="900" alt="Первый экран: главный вопрос про время и переключатель минут" loading="lazy" decoding="async"></a><figcaption>Первый экран: главный вопрос про время и переключатель минут</figcaption></figure>
+<h2>Решения и почему</h2>
+<div class="dve">
+  <div class="karta steklo"><h3>Поиск и фильтры</h3><ul>
+    <li>Время вынесено на первый экран: это главный фильтр, а не один из многих</li>
+    <li>Пустой результат подсказывает, какой фильтр убрать, и сразу говорит, сколько тогда найдётся: "Убрать годы: будет 1"</li>
+    <li>Поиск по названию и режиссёру не различает е и ё: "ежик" находит "Ёжик в тумане"</li>
+    <li>Вместо постеров цветные кадры со значком техники: чужие картинки без прав не использую</li></ul></div>
+  <div class="karta steklo"><h3>Подборка на вечер</h3><ul>
+    <li>Складывает время и сравнивает со свободным: "Это на 10 минут больше, чем есть времени"</li>
+    <li>Сохраняется после перезагрузки страницы</li>
+    <li>Очистку можно отменить кнопкой "Вернуть"</li>
+    <li>Когда убираешь мультфильм из середины, фокус переходит на соседний, а не теряется</li>
+    <li>На телефоне подборка видна плашкой внизу экрана</li></ul></div>
+</div>
+<div class="snimki"><figure class="snimok"><a href="../img/mini/mult-katalog.webp" aria-label="Открыть скриншот целиком: Каталог и подборка: три мультфильма влезают ровно в полчаса"><img src="../img/mini/mult-katalog.webp" width="1440" height="900" alt="Каталог и подборка: три мультфильма влезают ровно в полчаса" loading="lazy" decoding="async"></a><figcaption>Каталог и подборка: три мультфильма влезают ровно в полчаса</figcaption></figure><figure class="snimok"><a href="../img/mini/mult-pusto.webp" aria-label="Открыть скриншот целиком: Пустой результат: две кнопки, которые убирают один фильтр и сразу показывают, сколько найдётся"><img src="../img/mini/mult-pusto.webp" width="1440" height="900" alt="Пустой результат: две кнопки, которые убирают один фильтр и сразу показывают, сколько найдётся" loading="lazy" decoding="async"></a><figcaption>Пустой результат: две кнопки, которые убирают один фильтр и сразу показывают, сколько найдётся</figcaption></figure></div>
+<h2>Как проверяла</h2>
+<div class="tablica steklo"><table><tr><th>№</th><th>Что проверяю</th><th>Действие</th><th>Ожидаю</th><th>Получила</th><th>Итог</th></tr><tr><td>1</td><td>Фильтр по времени</td><td>10 минут</td><td>Только короткие</td><td>8 мультфильмов из 20</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>2</td><td>Два фильтра</td><td>10 минут и пластилин</td><td>Один мультфильм</td><td>"Пластилиновая ворона"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>3</td><td>Пустой результат</td><td>Добавить 60-е</td><td>Подсказка, какой фильтр убрать</td><td>"Убрать технику: будет 4", "Убрать годы: будет 1"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>4</td><td>Кнопка из подсказки</td><td>Нажать "Убрать годы"</td><td>Фильтр снят, фокус на счётчике</td><td>1 мультфильм, фокус на счётчике</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>5</td><td>Поиск по режиссёру</td><td>"норштейн" маленькими буквами</td><td>Оба фильма Норштейна</td><td>"Ёжик в тумане", "Сказка сказок"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>6</td><td>Поиск без ё</td><td>"ежик"</td><td>Находит "Ёжик в тумане"</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>7</td><td>Подсчёт времени</td><td>3 мультфильма на 40 минут при выборе "Полчаса"</td><td>Предупредить, что не влезает</td><td>"Это на 10 минут больше, чем есть времени"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>8</td><td>Удаление из середины</td><td>Убрать второй мультфильм</td><td>Фокус на соседнем пункте</td><td>фокус на "Убрать из подборки: Трое из Простоквашино"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>9</td><td>Отмена очистки</td><td>"Очистить подборку", затем "Вернуть"</td><td>Подборка вернулась, фокус на кнопке</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>10</td><td>Сортировка</td><td>"Сначала короткие"</td><td>Сначала 10 минут, в конце час</td><td>первые "Варежка", последняя "Снежная королева"</td><td><span class="pil pil--ok">пройдено</span></td></tr><tr><td>11</td><td>Сохранение</td><td>Перезагрузить страницу</td><td>Подборка на месте</td><td>так и есть</td><td><span class="pil pil--ok">пройдено</span></td></tr></table></div>
+<h2>Что нашла и исправила</h2>
+<div class="blok steklo"><ul>
+  <li><b>Кнопка "Очистить подборку" в пустой подборке.</b> Стиль кнопки перебивал атрибут hidden. Нашла на скриншоте, а не в автотесте: тест проверял атрибут, а не то, что видно на экране.</li>
+  <li><b>"Нашлось 1 мультфильм".</b> Глагол не согласовывался с числом, теперь "Подходит 1 мультфильм".</li>
+  <li><b>Первая подсказка для пустого результата</b> всегда советовала выбрать больше времени, даже когда мешал фильтр по годам. Теперь подсказка считает каждый вариант.</li>
+  <li><b>На телефоне</b> счётчик подборки в шапке переносился на две строки. Убрала его, на телефоне подборку показывает плашка внизу.</li>
+</ul><p>axe не находит нарушений WCAG 2.1 A и AA, в том числе с открытой подборкой.</p></div>
+<div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/mini/mult-tel-katalog.webp" aria-label="Открыть скриншот целиком: Телефон: фильтры переносятся, подборка видна плашкой внизу"><img src="../img/mini/mult-tel-katalog.webp" width="600" height="1299" alt="Телефон: фильтры переносятся, подборка видна плашкой внизу" loading="lazy" decoding="async"></a><figcaption>Телефон: фильтры переносятся, подборка видна плашкой внизу</figcaption></figure></div>
+<h2>Что проверила бы на людях</h2>
+<div class="blok steklo"><ul>
+  <li>Выбирают ли время до того, как начать листать, или переключатель не замечают</li>
+  <li>Понятна ли разница между техниками "рисованный" и "перекладка" без пояснения</li>
+  <li>Нужна ли кнопка "Смотреть" со ссылкой на официальный канал студии</li>
+</ul></div>
+<nav class="dalshe" aria-label="Другие мини-сайты"><a class="knopka" href="../#mini">Все мини-сайты</a><a class="knopka" href="mini-fitnes.html">Дальше: Ритм: тренировки дома</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>
