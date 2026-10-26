@@ -233,129 +233,6 @@ void main(){
 })();
 
 
-// ---------- 4б. Фото в арке: по снимку от курсора расходятся круги, как по воде ----------
-// Если в арке два снимка, по клику один жидко перетекает в другой: граница идёт по шуму
-// и переливается, как бензиновая плёнка. Без WebGL или при "уменьшить движение" фото обычное.
-document.querySelectorAll('[data-foto]').forEach(function foto(figura) {
-  const ramka = figura.querySelector('.foto__ramka');
-  const snimki = [...figura.querySelectorAll('.foto__img')];
-  if (snimki.length === 1) snimki.push(snimki[0]);     // один снимок: вторая текстура та же, смены нет
-  const dva = snimki[0] !== snimki[1];
-  const schet = figura.querySelector('.foto__schet');
-  let nomer = 0;
-  let perehod = null;           // функция, которая запускает жидкий переход; null — простой
-
-  function smenit() {
-    nomer = 1 - nomer;
-    figura.classList.toggle('foto--vtoroe', nomer === 1);
-    if (schet) schet.textContent = `0${nomer + 1} / 02`;
-    if (perehod) perehod(nomer);
-  }
-  if (dva) ramka.addEventListener('click', smenit);
-
-  if (tihoDvizhenie) return;
-  const canvas = document.createElement('canvas');
-  canvas.className = 'foto__voda';
-  canvas.setAttribute('aria-hidden', 'true');
-  const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
-  if (!gl) return;
-
-  const frag = `
-precision highp float;
-uniform sampler2D t0, t1; uniform float a0, a1, box, t, p; uniform vec2 res; uniform vec3 mysh;
-float hash(vec2 q){ return fract(sin(dot(q, vec2(127.1, 311.7))) * 43758.5453); }
-float noise(vec2 q){ vec2 i = floor(q), f = fract(q); f = f*f*(3.-2.*f);
-  return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y); }
-float fbm(vec2 q){ float s = 0., a = .5; for (int i = 0; i < 4; i++){ s += a*noise(q); q *= 2.07; a *= .5; } return s; }
-vec2 cover(vec2 uv, float a){ vec2 s = box > a ? vec2(1., a/box) : vec2(box/a, 1.); return (uv-.5)*s+.5; }
-void main(){
-  vec2 uv = gl_FragCoord.xy / res;
-  vec2 q = vec2(uv.x*box, uv.y), m = vec2(mysh.x*box, mysh.y);
-  float d = distance(q, m);
-  float volna = sin(d*38. - t*7.) * exp(-d*7.) * mysh.z;
-  vec2 smesh = (q - m) / max(d, .001) * volna * .012;
-  float n = fbm(uv*3.2 + vec2(0., t*.04));
-  float w = smoothstep(n - .08, n + .08, p*1.2 - .1);
-  float kraj = 1. - abs(w*2. - 1.);
-  vec2 tyag = vec2(n - .5) * .07 * kraj;
-  vec3 c = mix(texture2D(t0, cover(uv + smesh + tyag, a0)).rgb, texture2D(t1, cover(uv + smesh - tyag, a1)).rgb, w);
-  vec3 plenka = vec3(.80,.74,.76) + vec3(.20,.20,.22)*cos(6.2831*(n*2.2 + t*.05 + vec3(0.,.33,.67)));
-  c = mix(c, plenka, kraj*.8);
-  c += plenka * abs(volna) * .22;
-  gl_FragColor = vec4(c, 1.);
-}`;
-  const sozdat = (tip, kod) => { const s = gl.createShader(tip); gl.shaderSource(s, kod); gl.compileShader(s); return s; };
-  const prog = gl.createProgram();
-  gl.attachShader(prog, sozdat(gl.VERTEX_SHADER, 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0., 1.); }'));
-  gl.attachShader(prog, sozdat(gl.FRAGMENT_SHADER, frag));
-  gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-  gl.useProgram(prog);
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(prog, 'p');
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  const u = (imya) => gl.getUniformLocation(prog, imya);
-
-  Promise.all(snimki.map((img) => (img.complete ? Promise.resolve() : img.decode().catch(() => {})))).then(() => {
-    if (snimki.some((img) => !img.naturalWidth)) return;
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-    snimki.forEach((img, i) => {
-      gl.activeTexture(gl.TEXTURE0 + i);
-      gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-      gl.uniform1i(u(`t${i}`), i);
-      gl.uniform1f(u(`a${i}`), img.naturalWidth / img.naturalHeight);
-    });
-    ramka.append(canvas);
-
-    function razmer() {
-      const k = Math.min(devicePixelRatio || 1, 2);
-      canvas.width = Math.round(ramka.clientWidth * k);
-      canvas.height = Math.round(ramka.clientHeight * k);
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform2f(u('res'), canvas.width, canvas.height);
-      gl.uniform1f(u('box'), canvas.width / canvas.height);
-    }
-    addEventListener('resize', razmer);
-    razmer();
-
-    const m = { x: 0.5, y: 0.5, sila: 0 };
-    ramka.addEventListener('pointermove', (e) => {
-      const r = ramka.getBoundingClientRect();
-      m.x = (e.clientX - r.left) / r.width;
-      m.y = 1 - (e.clientY - r.top) / r.height;
-      m.sila = 1;
-    });
-    let p = 0, cel = 0, vidno = true;
-    perehod = (n) => { cel = n; };
-    new IntersectionObserver(([z]) => { vidno = z.isIntersecting; }).observe(ramka);
-    // снимки сами меняются раз в 9 секунд, пока на фото не навели мышку
-    let navedeno = false;
-    ramka.addEventListener('pointerenter', () => { navedeno = true; });
-    ramka.addEventListener('pointerleave', () => { navedeno = false; });
-    if (dva) setInterval(() => { if (vidno && !navedeno && !document.hidden) smenit(); }, 9000);
-
-    const start = performance.now();
-    (function kadr() {
-      if (vidno) {
-        p += (cel - p) * 0.035;
-        m.sila *= 0.965;
-        gl.uniform1f(u('p'), p);
-        gl.uniform1f(u('t'), (performance.now() - start) / 1000);
-        gl.uniform3f(u('mysh'), m.x, m.y, m.sila);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-      }
-      requestAnimationFrame(kadr);
-    })();
-  });
-});
-
-
 // ---------- 4в. 3D-модель: грузится, только когда до неё почти долистали ----------
 // путь в data-skript считается от этого файла (js/), а не от страницы
 (function model() {
@@ -383,7 +260,7 @@ if (mysh && !tihoDvizhenie) {
   if (foto) {
     addEventListener('pointermove', (e) => {
       const dx = e.clientX / innerWidth - 0.5, dy = e.clientY / innerHeight - 0.5;
-      foto.style.transform = `perspective(900px) translate(${dx * 14}px, ${dy * 14}px) rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg)`;
+      foto.style.transform = `translate(${dx * 12}px, ${dy * 12}px)`;   // только лёгкий сдвиг: наклон искажал лицо
     }, { passive: true });
   }
 }
