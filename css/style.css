@@ -99,7 +99,7 @@ a { color: var(--tekst); text-decoration-color: rgba(243, 236, 228, .35); text-u
 a:hover { text-decoration-color: currentColor; }
 h1, h2, h3 { font-weight: 300; letter-spacing: -.03em; line-height: 1.05; }
 /* главные заголовки плотнее и с очень лёгким тёплым свечением */
-h1, h2 { font-weight: 350; text-shadow: 0 0 18px rgba(243, 227, 207, .28), 0 0 44px rgba(205, 182, 242, .16); }
+h1, h2 { font-weight: 400; color: #fffaf4; text-shadow: 0 0 20px rgba(255, 240, 225, .45), 0 0 52px rgba(205, 182, 242, .28); }
 b, strong { font-weight: 500; }
 p { margin: 0 0 10px; }
 
@@ -126,6 +126,8 @@ p { margin: 0 0 10px; }
 
 /* ---------- 4. Подписи и перелив ---------- */
 .mono { font: var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--tekst-tihiy); }
+/* подписи в квадратных скобках над заголовками и в панелях: лавандовые, а не серые */
+p.mono { color: #c9b8f0; }
 .perelivy, .hrom {
   font-style: normal;
   background: var(--perelivy); background-size: 300% 100%;
@@ -134,17 +136,27 @@ p { margin: 0 0 10px; }
 }
 /* выделенные слова в заголовках: моноширинные и иногда "ломаются": цветной сдвиг по краям,
    и два куска слова на долю секунды съезжают вбок (копии-куски добавляет main.js, скринридер их не читает) */
+/* слово переливается, а цветной сдвиг по краям сделан через drop-shadow: обычная тень закрыла бы перелив */
 h1 em, h2 em {
   position: relative; display: inline-block; font: 500 .86em/1 "JetBrains Mono", Consolas, monospace; font-style: normal;
-  letter-spacing: -.035em; color: var(--tekst);
-  text-shadow: -.05em 0 rgba(242, 169, 196, .75), .05em 0 rgba(168, 226, 214, .75);
+  letter-spacing: -.035em; text-shadow: none;
+  background: var(--perelivy); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: perelivy 9s linear infinite;
+  filter: drop-shadow(-.05em 0 rgba(242, 169, 196, .85)) drop-shadow(.05em 0 rgba(168, 226, 214, .85));
 }
-.glitch__kusok { position: absolute; inset: 0; overflow: hidden; color: var(--tekst); pointer-events: none; }
+/* куски слова видны только в момент сдвига: на миг вспыхивают мятным и розовым, как сбой экрана */
+.glitch__kusok { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0; }
 /* куски на долю секунды выходят за край слова; у края экрана это давало прокрутку вбок, поэтому main обрезает их */
 main { overflow-x: clip; }
-.glitch__kusok--1 { clip-path: inset(18% 0 58% 0); text-shadow: .035em 0 #cdb6f2; animation: tryasti 2.6s steps(1) infinite; }
-.glitch__kusok--2 { clip-path: inset(62% 0 14% 0); text-shadow: -.035em 0 #f7c9b4; animation: tryasti 3.1s steps(1) infinite reverse; }
-@keyframes tryasti { 0%, 86%, 100% { transform: translateX(0); } 88% { transform: translateX(-.1em); } 92% { transform: translateX(.07em); } 96% { transform: translateX(-.04em); } }
+.glitch__kusok--1 { clip-path: inset(18% 0 58% 0); color: #a8e2d6; animation: tryasti 2.6s steps(1) infinite; }
+.glitch__kusok--2 { clip-path: inset(62% 0 14% 0); color: #f2a9c4; animation: tryasti 3.1s steps(1) infinite .9s; }
+@keyframes tryasti {
+  0%, 84%, 100% { transform: translateX(0); opacity: 0; }
+  86% { transform: translateX(-.1em); opacity: 1; }
+  90% { transform: translateX(.07em); opacity: 1; }
+  94% { transform: translateX(-.04em); opacity: 1; }
+  97% { transform: translateX(0); opacity: 0; }
+}
 @keyframes perelivy { to { background-position: 300% 0; } }
 
 /* ---------- 5. Кнопки ---------- */
@@ -171,8 +183,9 @@ main { overflow-x: clip; }
 .shapka--temno { background: rgba(15, 13, 18, .72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); padding-top: 14px; padding-bottom: 14px; }
 .shapka__imya { font-weight: 500; text-decoration: none; margin-right: auto; white-space: nowrap; }
 .shapka__menu { display: flex; gap: 32px; }
-.shapka__menu a { color: var(--tekst-tihiy); text-decoration: none; transition: color .3s; }
-.shapka__menu a:hover, .shapka__menu a[aria-current] { color: var(--tekst); }
+/* пункты меню своими цветами из перелива, при наведении светятся */
+.shapka__menu a { color: var(--c, var(--tekst-tihiy)); text-decoration: none; transition: text-shadow .3s, opacity .3s; opacity: .85; }
+.shapka__menu a:hover, .shapka__menu a[aria-current] { opacity: 1; text-shadow: 0 0 14px var(--c, var(--tekst)); }
 .shapka__pravo { display: flex; gap: 8px; align-items: center; }
 .shapka__rezyume { padding: 9px 18px; }
 .shapka__burger {
@@ -196,10 +209,22 @@ main { overflow-x: clip; }
 .pervyj h1 .stroka { display: block; }
 .pervyj__tekst { max-width: 560px; color: var(--tekst-tihiy); font-size: 16px; margin: 0 0 34px; }
 .pervyj__knopki { display: flex; flex-wrap: wrap; gap: 14px; }
-.pervyj__niz { display: flex; justify-content: space-between; align-items: end; gap: 20px; position: relative; z-index: 1; }
-.glavy-spisok { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 0; padding: 0; list-style: none; }
-.glavy-spisok a { color: inherit; text-decoration: none; transition: color .3s; }
-.glavy-spisok a:hover { color: var(--tekst); }
+/* разделы страницы цветными подсвеченными пилюлями наверху первого экрана; на компьютере их заменяет меню в шапке */
+.glavy { margin-bottom: 22px; }
+.glavy-spisok { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.glavy-spisok a {
+  display: inline-block; padding: 6px 12px; border-radius: 999px; font: var(--mono); letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  background: color-mix(in srgb, var(--c) 10%, transparent); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 22%, transparent);
+  transition: background .3s, box-shadow .3s;
+}
+.glavy-spisok a:hover { background: color-mix(in srgb, var(--c) 20%, transparent); box-shadow: 0 0 22px color-mix(in srgb, var(--c) 40%, transparent); }
+.glavy-spisok li:nth-child(1) a, .shapka__menu a:nth-child(1) { --c: var(--persik); }
+.glavy-spisok li:nth-child(2) a, .shapka__menu a:nth-child(2) { --c: var(--lavanda); }
+.glavy-spisok li:nth-child(3) a, .shapka__menu a:nth-child(3) { --c: var(--myata); }
+.glavy-spisok li:nth-child(4) a, .shapka__menu a:nth-child(4) { --c: var(--roza); }
+.glavy-spisok li:nth-child(5) a, .shapka__menu a:nth-child(5) { --c: #f3e3cf; }
+@media (min-width: 761px) { .glavy { display: none; } }
 /* фото с мягким краем: к краям кадра снимок уходит в прозрачность и сливается с сайтом; за ним мягкое переливающееся свечение */
 .foto {
   position: absolute; right: calc(var(--pole) - 1vw); top: 1vh; width: min(32vw, 460px); margin: 0;
@@ -247,6 +272,9 @@ main { overflow-x: clip; }
 .rasyanut { color: inherit; text-decoration: none; }
 .rasyanut::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
 
+/* пояснение над кейсами, почему разборы на сайтах известных компаний */
+.pochemu { margin-bottom: 20px; }
+.pochemu p:not(.mono) { margin: 8px 0 0; color: var(--tekst-tihiy); max-width: 900px; }
 .keysy { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
 .keysy .kartochka { grid-column: span 2; }
 .keysy .kartochka--shirokaya { grid-column: span 3; }
@@ -432,7 +460,6 @@ code { font: 13px "JetBrains Mono", Consolas, monospace; background: rgba(243, 2
   .pervyj__tekst { font-size: 17px; }
   .pervyj__knopki .knopka { flex: 1 1 100%; }
   .foto { position: relative; right: auto; top: auto; width: 76%; max-width: 320px; margin: 40px auto 10px; }
-  .pervyj__niz { flex-direction: column; align-items: start; margin-top: 20px; }
 
   .glava { padding-top: 80px; }
   .glava__shapka { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
