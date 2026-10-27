@@ -268,7 +268,8 @@ main { overflow-x: clip; }
 .kartochka h3 a { color: inherit; }
 .kartochka p { color: var(--tekst-tihiy); margin: 0; }
 .kartochka__niz { margin-top: auto; padding-top: 16px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.kartochka__chislo { font-size: 30px; font-weight: 200; letter-spacing: -.02em; }
+.kartochka__chislo { font-size: 30px; font-weight: 200; letter-spacing: -.02em; white-space: nowrap; flex-shrink: 0; }
+.kartochka__niz .mono { min-width: 0; overflow-wrap: anywhere; }
 /* вся карточка кликабельна: ссылка растянута на неё целиком */
 .rasyanut { color: inherit; text-decoration: none; }
 .rasyanut::after { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
