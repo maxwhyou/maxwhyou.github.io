@@ -138,11 +138,11 @@ p.mono { color: #c9b8f0; }
    и два куска слова на долю секунды съезжают вбок (копии-куски добавляет main.js, скринридер их не читает) */
 /* слово переливается, а цветной сдвиг по краям сделан через drop-shadow: обычная тень закрыла бы перелив */
 h1 em, h2 em {
-  position: relative; display: inline-block; font: 500 .86em/1 "JetBrains Mono", Consolas, monospace; font-style: normal;
-  letter-spacing: -.035em; text-shadow: none;
+  position: relative; display: inline-block; font: 400 .84em/1 "JetBrains Mono", Consolas, monospace; font-style: normal;
+  letter-spacing: -.04em; text-shadow: none;
   background: var(--perelivy); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: perelivy 9s linear infinite;
-  filter: drop-shadow(-.05em 0 rgba(242, 169, 196, .85)) drop-shadow(.05em 0 rgba(168, 226, 214, .85));
+  filter: drop-shadow(-.035em 0 rgba(242, 169, 196, .8)) drop-shadow(.035em 0 rgba(168, 226, 214, .8));
 }
 /* куски слова видны только в момент сдвига: на миг вспыхивают мятным и розовым, как сбой экрана */
 .glitch__kusok { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0; }
@@ -230,10 +230,11 @@ main { overflow-x: clip; }
   position: absolute; right: calc(var(--pole) - 1vw); top: 1vh; width: min(32vw, 460px); margin: 0;
   transition: transform .3s ease-out; z-index: 0;
 }
+/* светлые облака вокруг фото: фото теперь плотное, поэтому свечение шире и ярче, чтобы его было видно по краям */
 .foto::before {
-  content: ""; position: absolute; inset: 4% -22% 14% -22%; z-index: -1; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(242, 169, 196, .48), rgba(205, 182, 242, .32) 50%, rgba(168, 226, 214, .12) 70%, transparent 100%);
-  filter: blur(26px); animation: dyhanie 9s ease-in-out infinite alternate;
+  content: ""; position: absolute; inset: -6% -34% 4% -34%; z-index: -1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(247, 201, 180, .55), rgba(242, 169, 196, .45) 35%, rgba(205, 182, 242, .38) 58%, rgba(168, 226, 214, .16) 78%, transparent 100%);
+  filter: blur(34px); animation: dyhanie 9s ease-in-out infinite alternate;
 }
 @keyframes dyhanie { from { transform: translate(-3%, 2%) scale(.96); } to { transform: translate(3%, -2%) scale(1.04); } }
 .foto__ramka { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; }
