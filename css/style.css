@@ -343,7 +343,7 @@ main { overflow-x: clip; }
 .tegi li:nth-child(4n+4) { color: var(--roza); border-color: rgba(242, 169, 196, .45); }
 
 /* контакты: текст слева, второе фото справа, так же растворяется в темноте */
-.kontakty { display: grid; grid-template-columns: 1fr minmax(240px, 340px); gap: 60px; align-items: center; }
+.kontakty { display: grid; grid-template-columns: 1fr minmax(260px, min(560px, 40vw)); gap: 40px; align-items: center; }
 .kontakty h2 { font-size: clamp(54px, 8vw, 130px); margin: 14px 0 26px; }
 .foto--kontakty { position: relative; right: auto; top: auto; width: 100%; }
 .kontakty p { max-width: 620px; color: var(--tekst-tihiy); font-size: 16px; margin-bottom: 34px; }
@@ -468,9 +468,13 @@ code { font: 13px "JetBrains Mono", Consolas, monospace; background: rgba(243, 2
   .model { min-height: 440px; }
   .keysy .kartochka, .keysy .kartochka--shirokaya { grid-column: auto; }
   .kartochka h3 { font-size: 24px; }
-  .kontakty__spisok .knopka { flex: 1 1 100%; }
-  .kontakty { grid-template-columns: 1fr; gap: 10px; }
-  .foto--kontakty { width: 76%; max-width: 320px; margin: 30px auto 0; }
+  /* контакты на телефоне: Мария слева позади, кнопки справа поверх растаявшего офиса */
+  .kontakty { grid-template-columns: 44% 56%; gap: 0; }
+  .kontakty__tekst { display: contents; }
+  .kontakty__tekst > :not(.kontakty__spisok) { grid-column: 1 / -1; }
+  .foto--kontakty { grid-column: 1 / -1; grid-row: 4; width: 78%; max-width: 340px; margin: 0 0 0 -9%; z-index: 0; }
+  .kontakty__spisok { grid-column: 2; grid-row: 4; align-self: center; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+  .kontakty__spisok .knopka { flex: none; width: 100%; padding: 12px 10px; font-size: 14px; }
 
   .stranica { padding-top: 30px; }
   .itogi { grid-template-columns: 1fr 1fr; }
