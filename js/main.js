@@ -154,7 +154,7 @@ void main(){
   const ctx = canvas.getContext('2d');
   const m = { x: -100, y: -100, dvigalas: false, nadSsylkoj: false, est: false };
   const tochki = Array.from({ length: TOCHEK }, () => ({ x: -100, y: -100 }));
-  let tolshchina = 0, kolco = 3.5;
+  let tolshchina = 0, kolco = 4.5;
 
   function razmer() {
     const k = devicePixelRatio || 1;
@@ -216,11 +216,15 @@ void main(){
     }
     ctx.globalCompositeOperation = 'source-over';
     ctx.shadowBlur = 0;
-    kolco += ((m.nadSsylkoj ? 18 : 3.5) - kolco) * 0.2;
+    kolco += ((m.nadSsylkoj ? 18 : 4.5) - kolco) * 0.2;
     ctx.beginPath();
     ctx.arc(m.x, m.y, kolco, 0, Math.PI * 2);
+    // тёмная обводка: на бежевой кнопке и светлых снимках светлый курсор иначе пропадает
+    ctx.strokeStyle = 'rgba(15, 13, 18, .7)';
+    ctx.lineWidth = kolco > 6 ? 4 : 2.5;
+    ctx.stroke();
     if (kolco > 6) {
-      ctx.strokeStyle = cvet(sdvig, 0.9);
+      ctx.strokeStyle = cvet(sdvig, 0.95);
       ctx.lineWidth = 1.5;
       ctx.stroke();
     } else {
@@ -231,6 +235,20 @@ void main(){
   }
   requestAnimationFrame(kadr);
 })();
+
+
+// ---------- 4б. Выделенные слова в заголовках "ломаются": два куска-копии съезжают вбок ----------
+// Копии скрыты от скринридера, иначе он прочитает слово трижды
+document.querySelectorAll('h1 em, h2 em').forEach((em) => {
+  const tekst = em.textContent;
+  for (const n of [1, 2]) {
+    const kusok = document.createElement('span');
+    kusok.className = `glitch__kusok glitch__kusok--${n}`;
+    kusok.setAttribute('aria-hidden', 'true');
+    kusok.textContent = tekst;
+    em.append(kusok);
+  }
+});
 
 
 // ---------- 4в. 3D-модель: грузится, только когда до неё почти долистали ----------
