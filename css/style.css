@@ -459,6 +459,7 @@ code { font: 13px "JetBrains Mono", Consolas, monospace; background: rgba(243, 2
   .pervyj { min-height: auto; padding-bottom: 20px; }
   .pervyj__tekst-blok { padding: 10px 0 0; }
   .pervyj h1 { font-size: clamp(40px, 12vw, 56px); margin: 16px 0 20px; }
+  .pervyj__tekst-blok > .mono { letter-spacing: .03em; }   /* строка над заголовком помещается в одну строку на телефоне */
   .pervyj__tekst { font-size: 17px; }
   .foto { position: relative; right: auto; top: auto; width: 76%; max-width: 320px; margin: 40px auto 10px; }
   /* первый экран на телефоне: Мария сдвинута влево, кнопки справа рядом с ней, как в контактах */
