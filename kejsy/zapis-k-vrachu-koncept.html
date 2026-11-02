@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Запись к врачу, новый порядок шагов: продуктовый дизайн, Мария Колодницкая</title>
+<link rel="canonical" href="https://maxwhyou.github.io/kejsy/zapis-k-vrachu-koncept.html">
+<meta property="og:url" content="https://maxwhyou.github.io/kejsy/zapis-k-vrachu-koncept.html">
+<meta name="description" content="Учебный концепт записи к врачу с телефона: врач, время и цена до телефона. Пять экранов в Figma, компоненты, цветовая система и проверка контраста.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Запись к врачу, новый порядок шагов: продуктовый дизайн, Мария Колодницкая">
+<meta property="og:description" content="Учебный концепт записи к врачу с телефона: врач, время и цена до телефона. Пять экранов в Figma, компоненты, цветовая система и проверка контраста.">
+<meta property="og:image" content="https://maxwhyou.github.io/img/delovoe-foto-za-noutbukom.webp">
+<meta name="theme-color" content="#0f0d12">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/style.css?v=57911a1b">
+<script>document.documentElement.classList.add('js')</script>
+<script src="../js/main.js?v=f1c7b7e9" defer></script>
+</head>
+<body>
+<a class="propusk" href="#soderzhanie">Перейти к содержимому</a>
+<canvas class="voda" aria-hidden="true" data-yarkost="0.55"></canvas>
+
+<header class="shapka">
+  <a class="shapka__imya" href="../">Мария Колодницкая</a>
+  <nav class="shapka__menu" id="menu" aria-label="Разделы"><a href="../#keysy">Кейсы</a><a href="../#instrumenty">Инструменты</a><a href="../#mini">Мини-сайты</a><a href="../#obo-mne">Обо мне</a><a href="../#kontakty">Контакты</a></nav>
+  <div class="shapka__pravo">
+    <a class="knopka shapka__rezyume" href="../files/Kolodnitskaya-Mariya-SEO.pdf">Резюме PDF</a>
+    <button class="shapka__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню"><span></span></button>
+  </div>
+</header>
+
+<main id="soderzhanie" class="stranica">
+<nav class="kroshki" aria-label="Навигация"><a href="../">Главная</a> / <a href="../#keysy">Кейсы</a> / Запись к врачу: новый порядок шагов</nav>
+<h1>Запись к врачу <em>(новый порядок шагов)</em></h1>
+<p class="meta">Продуктовый дизайн · учебный концепт · 02.11.2026 · смартфон 375x812 · Figma · с клиникой не связан, врачи, время и цены придуманы для примера</p>
+<div class="blok steklo">
+<p><b>С чего началось:</b> в своём <a href="ux-zapis-k-vrachu.html">UX-разборе записи к терапевту</a> я нашла 10 проблем. Одна из самых серьёзных: запись начинается со входа по номеру телефона. До него не видно ни врачей, ни свободного времени, ни цены.</p>
+<p><b>Задача пользователя:</b> "Хочу записаться к терапевту на ближайшую дату, с телефона".</p>
+<p><b>Идея:</b> поменять порядок шагов. Сначала человек видит врачей, время и цену, а номер оставляет, когда уже решил записаться.</p>
+<p><b>Мой вклад:</b> выбрала проблему из своего разбора, определила новый порядок шагов, задала всю цветовую систему, роли цветов шрифта, рамки и свечения, проверила контраст. Серую основу экранов и компоненты собрала с помощью Claude по этому описанию, дальше дорабатывала их в Figma.</p>
+<ul class="tegi"><li>Figma</li><li>Мобильные экраны</li><li>Компоненты</li><li>Цветовая система</li><li>Контраст WCAG</li><li>Путь пользователя</li></ul>
+</div>
+<div class="itogi"><div class="itog steklo"><p class="chislo">5</p><span>экранов от выбора врача до подтверждения</span></div><div class="itog steklo"><p class="chislo">4 из 5</p><span>шаг, где спрашиваем телефон, раньше он был первым</span></div><div class="itog steklo"><p class="chislo">8</p><span>компонентов для кнопок, карточек, времени и полей</span></div><div class="itog steklo"><p class="chislo">4,76:1</p><span>самый низкий контраст текста на белом при норме 4,5:1</span></div></div>
+<h2>Проблема</h2>
+<div class="blok steklo">
+<p>Человек должен отдать номер телефона раньше, чем поймёт, есть ли подходящее время и сколько стоит приём. Особенно это мешает тем, кто пока только сравнивает клиники: им нужно узнать цену и время, а не заводить личный кабинет.</p>
+<p>В разборе я отнесла эту проблему к высокой важности и связала её с двумя эвристиками Нильсена: свобода и контроль пользователя, видимость состояния системы.</p>
+</div>
+<h2>Как изменился путь</h2>
+<div class="dve">
+<div class="blok steklo"><h3>Было</h3><ol><li>Вход по номеру телефона</li><li>Только потом врачи, время и цена</li></ol></div>
+<div class="blok steklo"><h3>Стало</h3><ol><li>Выбор врача: видно стаж, время и цену</li><li>Выбор дня и часа</li><li>Проверка записи</li><li>Телефон</li><li>Готово</li></ol></div>
+</div>
+<h2>Экраны</h2>
+<section class="karta steklo"><h3><span class="nomer">#1</span> Выбор врача</h3><div class="dve"><div><h4>Что на экране</h4><p>Человек сразу видит трёх терапевтов. На карточке всё, что нужно для решения: имя, стаж, ближайшее время и цена.</p></div><div><h4>Почему так</h4><p>В старом пути это можно было узнать только после входа по телефону. Здесь сравнить врачей можно без всякой регистрации, и ближайшее время стоит на первом экране, потому что задача звучит как "на ближайшую дату".</p></div></div><div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/zapis-k-vrachu-koncept/01_vybor_vracha.webp" aria-label="Открыть скриншот целиком: Экран 1. Выбор врача"><img src="../img/zapis-k-vrachu-koncept/01_vybor_vracha.webp" width="600" height="1299" alt="Экран 1. Выбор врача" loading="lazy" decoding="async"></a><figcaption>Экран 1. Выбор врача</figcaption></figure></div></section><section class="karta steklo"><h3><span class="nomer">#2</span> Врач и время</h3><div class="dve"><div><h4>Что на экране</h4><p>Сверху дни, ниже свободные часы, внизу кнопка с выбранным временем: "Выбрать 16:30".</p></div><div><h4>Почему так</h4><p>Время в кнопке подтверждает выбор прямо на месте нажатия, не надо искать глазами, что отмечено. Выбранный день и час выделены мятной заливкой, тонкой рамкой и мягким свечением, поэтому их видно сразу.</p></div></div><div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/zapis-k-vrachu-koncept/02_vremya.webp" aria-label="Открыть скриншот целиком: Экран 2. Врач и время"><img src="../img/zapis-k-vrachu-koncept/02_vremya.webp" width="600" height="1299" alt="Экран 2. Врач и время" loading="lazy" decoding="async"></a><figcaption>Экран 2. Врач и время</figcaption></figure></div></section><section class="karta steklo"><h3><span class="nomer">#3</span> Проверка записи</h3><div class="dve"><div><h4>Что на экране</h4><p>Врач, дата и время, адрес и стоимость собраны на одном экране перед подтверждением.</p></div><div><h4>Почему так</h4><p>Человек видит всю запись целиком до того, как оставит данные. Если что-то не подошло, он возвращается назад, а не исправляет уже созданную запись. Цена выделена красным, чтобы её нельзя было пропустить.</p></div></div><div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/zapis-k-vrachu-koncept/03_proverka.webp" aria-label="Открыть скриншот целиком: Экран 3. Проверка записи"><img src="../img/zapis-k-vrachu-koncept/03_proverka.webp" width="600" height="1299" alt="Экран 3. Проверка записи" loading="lazy" decoding="async"></a><figcaption>Экран 3. Проверка записи</figcaption></figure></div></section><section class="karta steklo"><h3><span class="nomer">#4</span> Телефон</h3><div class="dve"><div><h4>Что на экране</h4><p>Единственный вопрос: куда прислать подтверждение. Под полем подпись: "Позвоним, только если приём перенесётся".</p></div><div><h4>Почему так</h4><p>К этому шагу человек уже выбрал врача и время, поэтому понимает, зачем нужен номер. Подпись снимает страх, что начнутся рекламные звонки. Заголовок говорит о пользе для человека, а не о входе в личный кабинет.</p></div></div><div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/zapis-k-vrachu-koncept/04_telefon.webp" aria-label="Открыть скриншот целиком: Экран 4. Телефон"><img src="../img/zapis-k-vrachu-koncept/04_telefon.webp" width="600" height="1299" alt="Экран 4. Телефон" loading="lazy" decoding="async"></a><figcaption>Экран 4. Телефон</figcaption></figure></div></section><section class="karta steklo"><h3><span class="nomer">#5</span> Готово</h3><div class="dve"><div><h4>Что на экране</h4><p>Подтверждение "Вы записаны", детали приёма и две кнопки: добавить в календарь и перенести или отменить.</p></div><div><h4>Почему так</h4><p>Запись легко забыть и планы могут поменяться, поэтому оба действия стоят под рукой. Они оформлены второстепенными кнопками: главное действие на этом экране уже сделано.</p></div></div><div class="snimki"><figure class="snimok snimok--telefon"><a href="../img/zapis-k-vrachu-koncept/05_gotovo.webp" aria-label="Открыть скриншот целиком: Экран 5. Готово"><img src="../img/zapis-k-vrachu-koncept/05_gotovo.webp" width="600" height="1299" alt="Экран 5. Готово" loading="lazy" decoding="async"></a><figcaption>Экран 5. Готово</figcaption></figure></div></section>
+<h2>Цвет и шрифт</h2>
+<div class="blok steklo">
+<p>Основа интерфейса: мятный #42F5BF для главных кнопок и выбранных элементов. Оранжевый #F56F42 работает как тонкая рамка выделения. Шрифт Inter.</p>
+<p>Чёрно-белые детали я заменила прозрачными оттенками тех же цветов: карточки и поля получили мятную заливку 8%, кнопки времени 12%, рамки и линии стали оранжевыми с прозрачностью 40%. Экран остаётся светлым, но не выглядит серым.</p>
+<p>Текст я разделила по ролям, чтобы цвет сразу подсказывал, что перед тобой: имя, время или цена.</p>
+</div>
+<div class="tablica steklo"><table><tr><th>Цвет</th><th>Роль</th><th>Контраст</th></tr><tr><td>#214285</td><td>даты, значения, кнопки</td><td>9,62:1 на белом, 6,89:1 на мятной кнопке</td></tr><tr><td>#11785C</td><td>заголовки и имена врачей</td><td>5,43:1 на белом</td></tr><tr><td>#991834</td><td>цены</td><td>8,29:1 на белом</td></tr><tr><td>#397B91</td><td>мелкий текст</td><td>4,76:1 на белом</td></tr></table></div>
+<p class="meta">Норма WCAG для обычного текста: 4,5:1. Текст на кнопках тёмно-синий, потому что белый на мятном почти не читается.</p>
+<div class="snimki"><figure class="snimok"><a href="../img/zapis-k-vrachu-koncept/paliitra.webp" aria-label="Открыть скриншот целиком: Палитра проекта: основные цвета, цвета шрифта, прозрачные оттенки и фон"><img src="../img/zapis-k-vrachu-koncept/paliitra.webp" width="1600" height="1897" alt="Палитра проекта: основные цвета, цвета шрифта, прозрачные оттенки и фон" loading="lazy" decoding="async"></a><figcaption>Палитра проекта: основные цвета, цвета шрифта, прозрачные оттенки и фон</figcaption></figure></div>
+<h2>Компоненты</h2>
+<div class="blok steklo">
+<p>Повторяющиеся элементы собраны как компоненты: главная, нажатая и вторая кнопки, обычное и выбранное время, карточка врача, строка записи, поле ввода. Новый цвет, заданный в компоненте, сразу применяется на всех экранах, а экраны не расходятся между собой.</p>
+</div>
+<h2>Что дальше</h2>
+<div class="blok steklo">
+<p>Это концепт, на людях он пока не проверялся, поэтому я не обещаю рост записей. Следующие шаги:</p>
+<ul>
+<li>собрать кликабельный прототип и дорисовать экран ввода кода из СМС;</li>
+<li>дать прототип 2-3 людям с задачей "запишись к терапевту" и посмотреть, где они запнутся;</li>
+<li>проверить, достаточно ли заметно нажатие: цвет нажатой кнопки близок к основному.</li>
+</ul>
+</div>
+<nav class="dalshe" aria-label="Другие разборы"><a class="knopka knopka--steklo" href="ux-zapis-k-vrachu.html">Предыдущий: Запись к врачу с телефона</a><a class="knopka knopka--steklo" href="testirovanie-formy.html">Следующий: Калькулятор посылок Почты России</a></nav>
+</main>
+
+<footer class="podval mono">
+  <span>Мария Колодницкая, 2026</span>
+  <span><a href="https://t.me/maxwhyou">Telegram</a> · <a href="mailto:luchiguchi7@gmail.com">luchiguchi7@gmail.com</a></span>
+</footer>
+</body>
+</html>
